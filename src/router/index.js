@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+// 懒加载页面组件
+const Home = () => import('../views/Home/Home.vue')
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path:'/',
-    redirection: '/home'
+    redirect: '/home'
   },
   {
     path: '/home',
@@ -18,7 +19,6 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
   routes
 })
 
