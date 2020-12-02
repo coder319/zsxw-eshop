@@ -5,8 +5,6 @@
 </template>
 
 <style lang="less">
-* {
-  padding: 0;
-  margin: 0;
-}
+@import "./assets/style/common.css";
+
 </style>
