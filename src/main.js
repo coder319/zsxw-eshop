@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
-import http from './assets/Js/axios'
+import http from './assets/js/axios'
 
 Vue.prototype.$http = http
 
