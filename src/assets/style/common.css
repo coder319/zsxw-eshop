@@ -2,3 +2,41 @@
   padding: 0;
   margin: 0;
 }
+ul li{
+  list-style: none;
+}
+.lf{
+  float: left;
+}
+.rt{
+  float: right;
+}
+/* 单行超出隐藏 */
+.f-otw{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* 两行超出隐藏 */
+.f-oh2 {
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+/* 清除浮动 */
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+
+.clearfix:after {
+  clear: both;
+}

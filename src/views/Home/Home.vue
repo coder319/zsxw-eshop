@@ -1,14 +1,15 @@
 <template>
   <div class="home">
-    <h1>home</h1>
+    <nav-bar></nav-bar>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import navBar from  "../../assets/component/navBar"
 export default {
   name: 'Home',
   components: {
+    navBar
   },
   data() {
     return {
