@@ -1,178 +1,113 @@
 <template>
-    <a-table :columns="columns" :data-source="data">
-        <a slot="name" slot-scope="text">{{ text }}</a>
-        <span slot="customTitle"><a-icon type="smile-o" /> Name</span>
-        <span slot="tags" slot-scope="tags">
-      <a-tag
-              v-for="tag in tags"
-              :key="tag"
-              :color="tag === 'loser' ? 'volcano' : tag.length > 5 ? 'geekblue' : 'green'"
-      >
-        {{ tag.toUpperCase() }}
-      </a-tag>
-    </span>
-        <span slot="action" slot-scope="text, record">
-      <a>Invite 一 {{ record.name }}</a>
-      <a-divider type="vertical" />
-      <a>Delete</a>
-      <a-divider type="vertical" />
-      <a class="ant-dropdown-link"> More actions <a-icon type="down" /> </a>
-    </span>
-    </a-table>
+<!--    <backwrap>-->
+    <div class="wrap">
+        <div style="margin-bottom: 16px">
+            <span style="margin-left: 8px">
+        <template v-if="hasSelected">
+          {{ `已选择 ${selectedRowKeys.length} 项` }}
+        </template>
+      </span>
+        </div>
+        <a-table
+                :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
+                :columns="columns"
+                :data-source="data"
+        />
+        <!--在这那点是写那个右下角页码的哦，我觉得没得必要存在感觉在哪里有点突兀还影响布局-->
+        <div class="wrap_push">
+            <div class="SUM_number">
+                {{SUM_Price}}
+            </div>
+            <button class="pay" onclick="alert(123456)">
+                前往支付
+            </button>
+        </div>
+    </div>
+<!--    </backwrap>-->
 </template>
-
-
 <script>
+    /*    import backwrap from  "../../assets/component/backwrap"*/
     const columns = [
         {
             title: '名称',
             dataIndex: 'name',
-            key: 'name',
         },
         {
             title: '单价/元',
             dataIndex: 'Price',
-            key: 'Price',
         },
         {
             title: '数量',
             dataIndex: 'number',
-            key: 'number',
         },
         {
             title: '小计',
-            key: 'Prices',
             dataIndex: 'Prices',
         },
         {
             title: '操作',
-            key: 'action',
         },
     ];
 
-    const data = [
-        {
-            key: '1',
-            name: 'John Brown',
+    const data = [];
+    for (let i = 0; i < 5/* x.length */; i++) {
+        data.push({
+            key: i,
+            name: /*x[i].name*/ `${i}`,
             Price: 32,
-            number: '1',
-            Prices:Sum(),    /*这个我该这么加*/
-        }
-    ];
+            number:1,                             /*我这么去加按钮哦 还有点击事件*/
+            Prices:32,
+            action:'',                          /*我这么去加按钮哦 还有点击事件*/
+        });
+    }
 
     export default {
-  name: "Cart",
-    data() {
-        return {
-            data,
-            columns,
-        };
-    },
-    methods:{
-        Numberdown(n){
-            if(n==1)
-            {
-                return ;
-            }
-            n--;/*这样改数目得不得变哦*/
+        data() {
+            return {
+                data,
+                columns,
+                selectedRowKeys: [], // Check here to configure the default column
+                // 这我也不知道是干啥的
+                loading: false,// 这我也不知道是干啥的
+                SUM_Price:'¥'+32,
+            };
         },
-        Numberup(n){
-            n++; /*这样改数目得不得变哦*/
+        computed: {
+            hasSelected() {
+                return this.selectedRowKeys.length > 0;
+            },
         },
-        Sum(price,n){
-            return price * n;
-        }
-    }
-}
-</script>
-
-<style>
-</style>
-<!--原代码
-<template>
-  <a-table :columns="columns" :data-source="data">
-    <a slot="name" slot-scope="text">{{ text }}</a>
-    <span slot="customTitle"><a-icon type="smile-o" /> Name</span>
-    <span slot="tags" slot-scope="tags">
-      <a-tag
-        v-for="tag in tags"
-        :key="tag"
-        :color="tag === 'loser' ? 'volcano' : tag.length > 5 ? 'geekblue' : 'green'"
-      >
-        {{ tag.toUpperCase() }}
-      </a-tag>
-    </span>
-    <span slot="action" slot-scope="text, record">
-      <a>Invite 一 {{ record.name }}</a>
-      <a-divider type="vertical" />
-      <a>Delete</a>
-      <a-divider type="vertical" />
-      <a class="ant-dropdown-link"> More actions <a-icon type="down" /> </a>
-    </span>
-  </a-table>
-</template>
-<script>
-const columns = [
-  {
-    dataIndex: 'name',
-    key: 'name',
-    slots: { title: 'customTitle' },
-    scopedSlots: { customRender: 'name' },
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    scopedSlots: { customRender: 'tags' },
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    scopedSlots: { customRender: 'action' },
-  },
-];
-
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-];
-
-export default {
-  data() {
-    return {
-      data,
-      columns,
+        methods: {
+            onSelectChange(selectedRowKeys) {
+                console.log('selectedRowKeys changed: ', selectedRowKeys);
+                this.selectedRowKeys = selectedRowKeys;
+            },
+        },
+        /*components: {
+            backwrap
+        },*/
     };
-  },
-};
 </script>
--->
+<style>
+    .wrap{
+        width: 1200px;
+        margin: 0 auto;
+    }
+    .wrap_push{
+        display: flex;
+        justify-content:flex-end;
+    }
+    .SUM_number{
+        color: red;
+        font-size: 32px;
+        font-family: "Arial Black",serif;
+        margin: 1px 10px;
+    }
+    .pay{
+        margin-left: 20px;
+        font-size: 20px;
+        padding: 6px;
+        height: 48px;
+        font-family: 黑体,serif;
+    }
+</style>
