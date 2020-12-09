@@ -2,13 +2,23 @@
   <div class="cm_nav clearfix">
     <div class="logo lf"></div>
     <div class="search lf">
-      <a-input></a-input>
+      <a-input
+        v-model="search_value"
+        placeholder="输入想要搜索的商品"
+      >
+        <a-icon slot="suffix" type="search" />
+      </a-input>
     </div>
     <ul class="nav_items lf clearfix">
       <li v-for="item in items" class="nav_item lf">
         {{item}}
       </li>
     </ul>
+    <a-avatar
+      icon="user"
+      size="large"
+      class="rt nav_avatar"
+    ></a-avatar>
   </div>
 </template>
 
@@ -17,7 +27,8 @@ export default {
   name: "navBar",
   data () {
     return {
-      items: ['首 页','分 类','数 据']
+      items: ['首 页','分 类','数 据'],
+      search_value: '',
     };
   }
 }
@@ -32,16 +43,18 @@ export default {
   box-shadow: 0px 2px 3px #eaeaea;
 }
 .logo{
-  height: 64px;
-  width: 20%;
+  height: 54px;
+  margin: 5px 40px;
+  width: 202px;
+  background-color: pink;
 }
 .search{
-  width: 30%;
+  width: 25%;
 }
 .nav_items{
-  margin: 0 20px;
+  margin: 0 35px;
   .nav_item{
-    padding: 0 15px;
+    padding: 0 25px;
     height: 64px;
     line-height: 64px;
   }
@@ -50,5 +63,8 @@ export default {
     color: #1e85e9;
     border-bottom: 2px solid #1e85e9;
   }
+}
+.nav_avatar{
+  margin: 12px;
 }
 </style>
