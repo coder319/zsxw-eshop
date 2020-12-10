@@ -2,6 +2,12 @@
   padding: 0;
   margin: 0;
 }
+body{
+  line-height: 1;
+  font-size: 16px;
+  font-family: "Microsoft Yahei";
+  color: #333333;
+}
 ul li{
   list-style: none;
 }
@@ -13,6 +19,7 @@ ul li{
   background-color: #f6f6f6;
 }
 .cm_content .cm_main{
+  padding: 0 30px;
   width: 1200px;
   min-height: 704px;
   margin: 0 auto;
@@ -24,6 +31,13 @@ ul li{
 }
 .rt{
   float: right;
+}
+/*hover文本变色*/
+.link{
+  cursor: pointer;
+}
+.link:hover{
+  color: #1e85e9;
 }
 /* 单行超出隐藏 */
 .f-otw{
