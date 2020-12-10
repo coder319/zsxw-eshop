@@ -23,8 +23,14 @@
 </template>
 
 <script>
+import { Input,Icon,Avatar } from 'ant-design-vue'
 export default {
-  name: "navBar",
+  name: "NavBar",
+  components:{
+      AInput:Input,
+      AIcon:Icon,
+      AAvatar: Avatar
+  },
   data () {
     return {
       items: ['首 页','分 类','数 据'],
