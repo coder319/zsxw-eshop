@@ -40,5 +40,10 @@
       margin: 10px 20px;
     }
   }
+  .bottom{
+    p{
+      margin: 3px 0;
+    }
+  }
 }
 </style>
