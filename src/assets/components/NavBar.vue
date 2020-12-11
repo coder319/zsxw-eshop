@@ -63,6 +63,9 @@ export default {
     padding: 0 25px;
     height: 64px;
     line-height: 64px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #999999;
   }
   .cur,.nav_item:hover{
     font-weight: bold;
@@ -71,6 +74,6 @@ export default {
   }
 }
 .nav_avatar{
-  margin: 12px;
+  margin: 12px 15px 12px 12px;
 }
 </style>

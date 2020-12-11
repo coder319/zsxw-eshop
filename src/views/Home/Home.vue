@@ -62,9 +62,9 @@
 </template>
 
 <script>
-import navBar from "../../assets/component/NavBar"
-import cm_footer from "../../assets/component/Footer"
-import Book from "../../assets/component/Book"
+import navBar from "components/NavBar"
+import cm_footer from "components/Footer"
+import Book from "components/Book"
 import { Carousel } from "ant-design-vue"
 export default {
   name: 'Home',
