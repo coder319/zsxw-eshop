@@ -14,14 +14,14 @@ ul li{
 
 .cm_content{
   width: 100%;
-  min-height: 704px;
+  min-height: 725px;
   padding: 20px 0;
   background-color: #f6f6f6;
 }
 .cm_content .cm_main{
   padding: 0 30px;
   width: 1200px;
-  min-height: 704px;
+  min-height: 725px;
   margin: 0 auto;
   background-color: #fff;
   box-shadow: 0 2px 2px #f6f6f6;
