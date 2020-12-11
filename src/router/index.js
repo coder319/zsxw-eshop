@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 // 懒加载页面组件
-const Home = () => import('../views/Home/Home.vue')
 const Cart = () => import('../views/Cart/Cart.vue')
 Vue.use(VueRouter)
 
@@ -13,7 +12,17 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: Home
+    component: () => import('../views/Home/Home.vue')
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: () => import('../views/Profile/Profile')
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component: () => import('../views/Search/Search')
   },
   {
     path: '/cart',
