@@ -5,10 +5,10 @@
       <div class="cm_main clearfix">
 <!--        顶部轮播图-->
         <a-carousel class="home_carousel" autoplay>
-          <div class="slide">1</div>
-          <div class="slide">2</div>
-          <div class="slide">3</div>
-          <div class="slide">4</div>
+          <div class="slide"><img src="../../assets/image/home_banner_slide1.jpg" alt="1"></div>
+          <div class="slide"><img src="../../assets/image/home_banner_slide1.jpg" alt="2"></div>
+          <div class="slide"><img src="../../assets/image/home_banner_slide1.jpg" alt="3"></div>
+          <div class="slide"><img src="../../assets/image/home_banner_slide1.jpg" alt="4"></div>
         </a-carousel>
 <!--        左侧列表-->
         <div class="lf lf_box">
@@ -27,11 +27,32 @@
         </div>
 <!--        主体右侧盒子-->
         <div class="lf rt_box">
-          <div class="title">
+          <span class="title">
             特价专区
+          </span>
+          <div class="content clearfix">
+            <book class="lf tjzq_book"></book>
+            <book class="lf tjzq_book"></book>
+            <book class="lf tjzq_book"></book>
+            <book class="lf tjzq_book"></book>
           </div>
-          <div class="content">
-            <book></book>
+          <span class="title">
+            畅销书籍
+          </span>
+          <div class="content clearfix">
+            <book class="lf tjzq_book"></book>
+            <book class="lf tjzq_book"></book>
+            <book class="lf tjzq_book"></book>
+            <book class="lf tjzq_book"></book>
+          </div>
+          <span class="title">
+            新书上架
+          </span>
+          <div class="content clearfix">
+            <book class="lf tjzq_book"></book>
+            <book class="lf tjzq_book"></book>
+            <book class="lf tjzq_book"></book>
+            <book class="lf tjzq_book"></book>
           </div>
         </div>
       </div>
@@ -103,6 +124,9 @@ export default {
   .slide{
     height: 320px;
     background-color: pink;
+    img{
+      height: 320px;
+    }
   }
 }
 .lf_box{
@@ -143,5 +167,8 @@ export default {
     width: 100%;
     border-top: 1px solid #dddddd;
   }
+}
+.tjzq_book{
+  margin: 10px 20px;
 }
 </style>
