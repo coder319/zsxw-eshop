@@ -16,6 +16,7 @@ export default {
   height: 108px;
   line-height: 108px;
   text-align: center;
+  color: #666666;
   background-color: #f6f6f6;
 }
 </style>
