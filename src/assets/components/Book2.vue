@@ -9,8 +9,6 @@
       <div class="price">￥{{book.price.toFixed(2)}}</div>
     </div>
     <div class="opts lf">
-<!--      <a-button class="btn" block>收藏</a-button>-->
-<!--      <a-button class="btn" block>加入购物车</a-button>-->
       <a-button shape="circle" icon="star"></a-button>
       <a-button shape="circle" icon="shopping"></a-button>
     </div>
@@ -47,9 +45,11 @@ export default {
 .cm_book2{
   padding: 20px;
   border-bottom: 1px solid #dddddd;
+  //左侧封面
   img{
     width: 145px;
   }
+  // 中间书本信息
   .describe{
     margin-left: 20px;
     width: 835px;
@@ -74,6 +74,7 @@ export default {
       color: #b12704;
     }
   }
+  // 右侧按钮布局样式
   .opts{
     margin-top: 40px;
     width: 100px;
