@@ -45,6 +45,7 @@ export default {
   height: 64px;
   line-height: 64px;
   width: 100%;
+  min-width: 1200px;
   // border-bottom: 2px solid #1e85e9;
   box-shadow: 0px 2px 3px #eaeaea;
 }
