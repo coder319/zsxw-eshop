@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Author: Wangtr
+ * @Date: 2020-12-05 01:03:36
+ * @LastEditTime: 2020-12-31 11:06:21
+ * @LastEditors: Wangtr
+ * @Reference: 
+-->
 <template>
   <div class="cm_nav clearfix">
     <div class="logo lf"></div>
@@ -18,6 +26,7 @@
       icon="user"
       size="large"
       class="rt nav_avatar"
+      @click="goto('/login')"
     ></a-avatar>
   </div>
 </template>
@@ -36,6 +45,11 @@ export default {
       items: ['首 页','分 类','数 据'],
       search_value: '',
     };
+  },
+  methods: {
+    goto(path) {
+      this.$router.push(path)
+    }
   }
 }
 </script>
