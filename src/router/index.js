@@ -1,3 +1,11 @@
+/*
+ * @Description: 路由入口文件
+ * @Author: Wangtr
+ * @Date: 2020-11-14 09:37:58
+ * @LastEditTime: 2020-12-31 10:58:37
+ * @LastEditors: Wangtr
+ * @Reference: 
+ */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 // 懒加载页面组件
@@ -6,13 +14,18 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path:'/',
+    path: '/',
     redirect: '/home'
   },
   {
     path: '/home',
     name: 'Home',
     component: () => import('../views/Home/Home.vue')
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/Login/Login.vue')
   },
   {
     path: '/profile',
