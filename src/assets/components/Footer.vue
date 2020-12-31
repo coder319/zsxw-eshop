@@ -1,6 +1,14 @@
+<!--
+ * @Description: 
+ * @Author: Wangtr
+ * @Date: 2020-12-10 10:53:40
+ * @LastEditTime: 2020-12-31 11:10:04
+ * @LastEditors: Wangtr
+ * @Reference: 
+-->
 <template>
   <div class="footer">
-    枕书席文在线商城 ©2020 Created by 枕书席文制作组
+    枕书席文在线商城 ©2020 Created by 枕书席文制作组 本产品支持1366 * 768 及更大屏幕
   </div>
 </template>
 
