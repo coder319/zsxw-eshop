@@ -3,6 +3,8 @@
   margin: 0;
 }
 body{
+  height: 100%;
+  width: 100%;
   line-height: 1 !important;
   font-size: 16px !important;
   font-family: "Microsoft Yahei" !important;
@@ -10,6 +12,11 @@ body{
 }
 ul li{
   list-style: none;
+}
+
+.ant-spin{
+  position: fixed!important;
+  top: 100px!important;
 }
 
 .cm_content{
