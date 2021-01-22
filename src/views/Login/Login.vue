@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Wangtr
  * @Date: 2020-12-31 10:54:21
- * @LastEditTime: 2021-01-08 23:29:30
+ * @LastEditTime: 2021-01-22 11:05:41
  * @LastEditors: Wangtr
  * @Reference: 
 -->
@@ -13,7 +13,7 @@
     </div> -->
     <div class="main">
       <div class="top">
-        <img :src=bgcsrc alt="logo">
+        <img :src=bgcsrc alt="logo" @click="toRoute('/')">
       </div>
       <a-form-model :model="loginForm" :label-col="{span:4, offset: 4}" :wrapper-col="{span:8}">
         <a-form-model-item label="用户名" prop="loginName">
@@ -80,6 +80,9 @@ export default {
         this.vcodeImg = res.code
         this.loginForm.codeUuid = res.uuid
       })
+    },
+    toRoute(path) {
+      this.$router.push(path)
     }
   }
 }
@@ -87,9 +90,11 @@ export default {
 
 <style lang="less" scoped>
 .background{
-  position: fixed;
-  height: 100%;
-  width: 100%;
+  // position: fixed;
+  // height: 100%;
+  // width: 100%;
+  height: 100vh;
+  width: 100vw;
   background: url('../../assets/image/login_bgc.jpg') no-repeat;
   background-size: 100% 100%;
 }
