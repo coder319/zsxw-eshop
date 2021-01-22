@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Wangtr
  * @Date: 2020-11-14 09:37:58
- * @LastEditTime: 2020-12-31 13:35:36
+ * @LastEditTime: 2021-01-22 17:57:28
  * @LastEditors: Wangtr
  * @Reference: 
  */
@@ -13,7 +13,19 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    LOADING_NUM: 0
+    LOADING_NUM: 0,
+    USER_INFO: {
+      id: 0,
+      username: '',
+      email: '',
+      sex: '',
+      headImg: '',
+      email: '',
+      exp: 0,
+      introduce: '',
+      level: 0,
+      recommend: 0
+    }
   },
   mutations: {
     LOADING_START(state) {

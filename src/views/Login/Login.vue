@@ -1,8 +1,8 @@
 <!--
- * @Description: 
+ * @Description: 登陆页面
  * @Author: Wangtr
  * @Date: 2020-12-31 10:54:21
- * @LastEditTime: 2021-01-22 11:05:41
+ * @LastEditTime: 2021-01-22 14:10:53
  * @LastEditors: Wangtr
  * @Reference: 
 -->
@@ -72,7 +72,10 @@ export default {
   methods: {
     login() {
       this.$http.login(this.loginForm).then(res => {
-        console.log(res);
+        // console.log(res);
+        Object.keys(res).forEach(val => {
+          localStorage.setItem(val,res[val])
+        })
       })
     },
     getVcode() {
