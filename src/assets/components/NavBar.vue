@@ -2,7 +2,7 @@
  * @Description:  导航栏
  * @Author: Wangtr
  * @Date: 2020-12-05 01:03:36
- * @LastEditTime: 2021-01-27 15:25:47
+ * @LastEditTime: 2021-01-27 16:04:50
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -70,6 +70,7 @@ export default {
   min-width: 1200px;
   // border-bottom: 2px solid #1e85e9;
   box-shadow: 0px 2px 3px #eaeaea;
+  background-color: #fff;
 }
 .logo{
   height: 54px;

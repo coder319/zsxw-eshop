@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import navBar from 'components/NavBar';
+import navBar from 'components/FixedNav';
 import cmFooter from 'components/Footer';
 import Book from 'components/Book';
 import { Carousel } from 'ant-design-vue';

@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import navBar from 'components/NavBar';
+import navBar from 'components/FixedNav';
 import cmFooter from 'components/Footer';
 import { Avatar, Tag } from 'ant-design-vue';
 const echart = require('echarts');

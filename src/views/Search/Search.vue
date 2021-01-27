@@ -2,7 +2,7 @@
  * @Description: 搜索结果页
  * @Author: Wangtr
  * @Date: 2020-12-11 13:40:08
- * @LastEditTime: 2021-01-27 15:31:03
+ * @LastEditTime: 2021-01-27 16:23:32
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import navBar from 'components/NavBar';
+import navBar from 'components/FixedNav';
 import cmFooter from 'components/Footer';
 import Book from 'components/Book2';
 export default {
