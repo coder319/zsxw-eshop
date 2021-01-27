@@ -2,7 +2,7 @@
  * @Description: 登陆页面
  * @Author: Wangtr
  * @Date: 2020-12-31 10:54:21
- * @LastEditTime: 2021-01-22 18:30:14
+ * @LastEditTime: 2021-01-27 15:21:40
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -73,15 +73,33 @@ export default {
         login() {
             this.$http.login(this.loginForm).then(res => {
                 // console.log(res);
-                Object.keys(res).forEach(val => {
-                    localStorage.setItem(val, res[val]);
-                });
+                console.log(this, this.$error);
+                if (res.success) {
+                    localStorage.setItem('zsxw_eshop_user_info', JSON.stringify(res.data));
+                    this.$store.commit('USER_INFO_UPDATE', res.data);
+                    this.$store.commit('LOGIN');
+                    this.$success({
+                        title: '登陆成功',
+                        content: '确认后跳转页面',
+                        onOk: () => {
+                            this.$router.go(-1);
+                        }
+                    });
+                } else {
+                    this.$error({
+                        title: '登陆失败',
+                        content: res.msg,
+                        onOk: () => {
+                            this.getVcode();
+                        }
+                    });
+                }
             });
         },
         getVcode() {
             this.$http.getVerificationCode().then(res => {
-                this.vcodeImg = res.code;
-                this.loginForm.codeUuid = res.uuid;
+                this.vcodeImg = res.data.code;
+                this.loginForm.codeUuid = res.data.uuid;
             });
         },
         toRoute(path) {
