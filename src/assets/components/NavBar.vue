@@ -2,7 +2,7 @@
  * @Description:  导航栏
  * @Author: Wangtr
  * @Date: 2020-12-05 01:03:36
- * @LastEditTime: 2021-01-27 17:07:33
+ * @LastEditTime: 2021-01-27 17:24:29
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -68,7 +68,7 @@ export default {
   line-height: @navHeight;
   width: 100%;
   min-width: 1200px;
-  // border-bottom: 2px solid #1e85e9;
+  border-bottom: 1px solid #f6f6f6;
   box-shadow: 0px 2px 3px #eaeaea;
   background-color: #fff;
 }
