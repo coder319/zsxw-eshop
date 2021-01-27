@@ -1,8 +1,8 @@
 <!--
- * @Description:
+ * @Description: 用户个人界面
  * @Author: Wangtr
  * @Date: 2020-12-02 20:34:50
- * @LastEditTime: 2021-01-22 18:33:44
+ * @LastEditTime: 2021-01-27 15:29:03
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -21,20 +21,21 @@
                 </div>
             </div>
         </div>
-        <cm_footer></cm_footer>
+        <cm-footer></cm-footer>
     </div>
 </template>
 
 <script>
 import navBar from 'components/NavBar';
-import cm_footer from 'components/Footer';
+import cmFooter from 'components/Footer';
 import { Avatar, Tag } from 'ant-design-vue';
 const echart = require('echarts');
 
 export default {
     name: 'Profile',
     components: {
-        navBar, cm_footer,
+        navBar,
+        cmFooter,
         AAvatar: Avatar,
         ATag: Tag
     },

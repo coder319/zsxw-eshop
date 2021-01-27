@@ -1,3 +1,11 @@
+<!--
+ * @Description: 搜索结果页
+ * @Author: Wangtr
+ * @Date: 2020-12-11 13:40:08
+ * @LastEditTime: 2021-01-27 15:31:03
+ * @LastEditors: Wangtr
+ * @Reference:
+-->
 <template>
     <div>
         <nav-bar></nav-bar>
@@ -10,18 +18,18 @@
                 <book></book>
             </div>
         </div>
-        <cm_footer></cm_footer>
+        <cm-footer></cm-footer>
     </div>
 </template>
 
 <script>
 import navBar from 'components/NavBar';
-import cm_footer from 'components/Footer';
+import cmFooter from 'components/Footer';
 import Book from 'components/Book2';
 export default {
     name: 'Search',
     components: {
-        navBar, cm_footer, Book
+        navBar, cmFooter, Book
     }
 };
 </script>

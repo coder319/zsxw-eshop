@@ -57,20 +57,20 @@
                 </div>
             </div>
         </div>
-        <cm_footer></cm_footer>
+        <cm-footer></cm-footer>
     </div>
 </template>
 
 <script>
 import navBar from 'components/NavBar';
-import cm_footer from 'components/Footer';
+import cmFooter from 'components/Footer';
 import Book from 'components/Book';
 import { Carousel } from 'ant-design-vue';
 export default {
     name: 'Home',
     components: {
         navBar,
-        cm_footer,
+        cmFooter,
         Book,
         ACarousel: Carousel
     },

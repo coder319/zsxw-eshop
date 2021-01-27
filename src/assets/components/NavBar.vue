@@ -2,7 +2,7 @@
  * @Description:  导航栏
  * @Author: Wangtr
  * @Date: 2020-12-05 01:03:36
- * @LastEditTime: 2021-01-27 14:11:54
+ * @LastEditTime: 2021-01-27 15:25:47
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -23,7 +23,7 @@
             </li>
         </ul>
         <a-avatar
-            v-if="$store.state.USER_INFO.headImg===''"
+            v-if="!$store.state.isLogin"
             icon="user"
             size="large"
             class="rt nav_avatar"
