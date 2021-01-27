@@ -2,7 +2,7 @@
  * @Description:  导航栏
  * @Author: Wangtr
  * @Date: 2020-12-05 01:03:36
- * @LastEditTime: 2021-01-27 16:04:50
+ * @LastEditTime: 2021-01-27 17:07:33
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -64,8 +64,8 @@ export default {
 
 <style lang="less">
 .cm_nav{
-  height: 64px;
-  line-height: 64px;
+  height: @navHeight;
+  line-height: @navHeight;
   width: 100%;
   min-width: 1200px;
   // border-bottom: 2px solid #1e85e9;

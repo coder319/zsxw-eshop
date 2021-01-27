@@ -2,7 +2,7 @@
  * @Description:
  * @Author: Wangtr
  * @Date: 2020-12-10 10:53:40
- * @LastEditTime: 2021-01-22 18:31:52
+ * @LastEditTime: 2021-01-27 17:08:35
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -21,8 +21,8 @@ export default {
 <style lang="less" scoped>
 .footer{
   width: 100%;
-  height: 108px;
-  line-height: 108px;
+  height: @footerHeight;
+  line-height: @footerHeight;
   text-align: center;
   color: #666666;
   background-color: #f6f6f6;
