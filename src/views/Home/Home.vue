@@ -112,6 +112,15 @@ export default {
     },
     computed: {
     },
+    created() {
+        if (!this.$store.state.isLogin) {
+            const userInfo = localStorage.getItem('zsxw_eshop_user_info');
+            if (userInfo) {
+                this.$store.commit('USER_INFO_UPDATE', JSON.parse(userInfo));
+                this.$store.commit('LOGIN');
+            }
+        }
+    },
     methods: {
     }
 };

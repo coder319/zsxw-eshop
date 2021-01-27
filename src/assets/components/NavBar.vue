@@ -2,7 +2,7 @@
  * @Description:  导航栏
  * @Author: Wangtr
  * @Date: 2020-12-05 01:03:36
- * @LastEditTime: 2021-01-22 18:31:31
+ * @LastEditTime: 2021-01-27 14:11:54
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -23,10 +23,18 @@
             </li>
         </ul>
         <a-avatar
+            v-if="$store.state.USER_INFO.headImg===''"
             icon="user"
             size="large"
             class="rt nav_avatar"
             @click="goto('/login')"
+        ></a-avatar>
+        <a-avatar
+            v-else
+            :src="$store.state.USER_INFO.headImg"
+            size="large"
+            class="rt nav_avatar"
+            @click="goto('/profile')"
         ></a-avatar>
     </div>
 </template>

@@ -2,7 +2,7 @@
  * @Description: VueX
  * @Author: Wangtr
  * @Date: 2020-11-14 09:37:58
- * @LastEditTime: 2021-01-22 18:33:18
+ * @LastEditTime: 2021-01-27 14:20:49
  * @LastEditors: Wangtr
  */
 import Vue from 'vue';
@@ -13,6 +13,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     LOADING_NUM: 0,
+    isLogin: false,
     USER_INFO: {
       id: 0,
       username: '',
@@ -32,6 +33,17 @@ export default new Vuex.Store({
     },
     LOADING_END(state) {
       this.state.LOADING_NUM--;
+    },
+    USER_INFO_UPDATE(state, info) {
+      Object.keys(state.USER_INFO).forEach(val => {
+        state.USER_INFO[val] = info[val];
+      });
+    },
+    LOGIN(state) {
+      state.isLogin = true;
+    },
+    LOGOUT(state) {
+      state.isLogin = false;
     }
   },
   actions: {
