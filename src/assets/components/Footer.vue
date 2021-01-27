@@ -1,21 +1,21 @@
 <!--
- * @Description: 
+ * @Description:
  * @Author: Wangtr
  * @Date: 2020-12-10 10:53:40
- * @LastEditTime: 2020-12-31 11:10:04
+ * @LastEditTime: 2021-01-22 18:31:52
  * @LastEditors: Wangtr
- * @Reference: 
+ * @Reference:
 -->
 <template>
-  <div class="footer">
-    枕书席文在线商城 ©2020 Created by 枕书席文制作组 本产品支持1366 * 768 及更大屏幕
-  </div>
+    <div class="footer">
+        枕书席文在线商城 ©2020 Created by 枕书席文制作组 本产品支持1366 * 768 及更大屏幕
+    </div>
 </template>
 
 <script>
 export default {
-    name: "Footer"
-}
+    name: 'Footer'
+};
 </script>
 
 <style lang="less" scoped>

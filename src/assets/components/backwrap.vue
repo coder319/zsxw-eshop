@@ -1,12 +1,20 @@
+<!--
+ * @Description:
+ * @Author: Wangtr
+ * @Date: 2020-12-11 13:57:13
+ * @LastEditTime: 2021-01-22 18:31:44
+ * @LastEditors: Wangtr
+ * @Reference:
+-->
 <template>
     <div id="backwrap">
     </div>
 </template>
 
 <script>
-    export default {
-        name: "backwrap"
-    }
+export default {
+    name: 'Backwrap'
+};
 </script>
 
 <style lang="less">

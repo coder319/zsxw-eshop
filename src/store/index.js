@@ -1,15 +1,14 @@
 /*
- * @Description: 
+ * @Description: VueX
  * @Author: Wangtr
  * @Date: 2020-11-14 09:37:58
- * @LastEditTime: 2021-01-22 17:57:28
+ * @LastEditTime: 2021-01-22 18:33:18
  * @LastEditors: Wangtr
- * @Reference: 
  */
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
@@ -20,7 +19,7 @@ export default new Vuex.Store({
       email: '',
       sex: '',
       headImg: '',
-      email: '',
+      eMail: '',
       exp: 0,
       introduce: '',
       level: 0,
@@ -39,4 +38,4 @@ export default new Vuex.Store({
   },
   modules: {
   }
-})
+});

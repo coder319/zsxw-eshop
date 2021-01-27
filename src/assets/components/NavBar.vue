@@ -2,56 +2,56 @@
  * @Description:  导航栏
  * @Author: Wangtr
  * @Date: 2020-12-05 01:03:36
- * @LastEditTime: 2020-12-31 11:06:21
+ * @LastEditTime: 2021-01-22 18:31:31
  * @LastEditors: Wangtr
- * @Reference: 
+ * @Reference:
 -->
 <template>
-  <div class="cm_nav clearfix">
-    <div class="logo lf"></div>
-    <div class="search lf">
-      <a-input
-        v-model="search_value"
-        placeholder="输入想要搜索的商品"
-      >
-        <a-icon slot="suffix" type="search" />
-      </a-input>
+    <div class="cm_nav clearfix">
+        <div class="logo lf"></div>
+        <div class="search lf">
+            <a-input
+                v-model="search_value"
+                placeholder="输入想要搜索的商品"
+            >
+                <a-icon slot="suffix" type="search"></a-icon>
+            </a-input>
+        </div>
+        <ul class="nav_items lf clearfix">
+            <li v-for="(item,index) in items" :key="index" class="nav_item lf">
+                {{ item }}
+            </li>
+        </ul>
+        <a-avatar
+            icon="user"
+            size="large"
+            class="rt nav_avatar"
+            @click="goto('/login')"
+        ></a-avatar>
     </div>
-    <ul class="nav_items lf clearfix">
-      <li v-for="item in items" class="nav_item lf">
-        {{item}}
-      </li>
-    </ul>
-    <a-avatar
-      icon="user"
-      size="large"
-      class="rt nav_avatar"
-      @click="goto('/login')"
-    ></a-avatar>
-  </div>
 </template>
 
 <script>
-import { Input,Icon,Avatar } from 'ant-design-vue'
+import { Input, Icon, Avatar } from 'ant-design-vue';
 export default {
-  name: "NavBar",
-  components:{
-      AInput:Input,
-      AIcon:Icon,
-      AAvatar: Avatar
-  },
-  data () {
-    return {
-      items: ['首 页','分 类','数 据'],
-      search_value: '',
-    };
-  },
-  methods: {
-    goto(path) {
-      this.$router.push(path)
+    name: 'NavBar',
+    components: {
+        AInput: Input,
+        AIcon: Icon,
+        AAvatar: Avatar
+    },
+    data() {
+        return {
+            items: ['首 页', '分 类', '数 据'],
+            search_value: ''
+        };
+    },
+    methods: {
+        goto(path) {
+            this.$router.push(path);
+        }
     }
-  }
-}
+};
 </script>
 
 <style lang="less">

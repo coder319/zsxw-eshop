@@ -2,15 +2,14 @@
  * @Description: 路由入口文件
  * @Author: Wangtr
  * @Date: 2020-11-14 09:37:58
- * @LastEditTime: 2020-12-31 10:58:37
+ * @LastEditTime: 2021-01-22 19:00:05
  * @LastEditors: Wangtr
- * @Reference: 
  */
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 // 懒加载页面组件
-const Cart = () => import('../views/Cart/Cart.vue')
-Vue.use(VueRouter)
+const Cart = () => import('../views/Cart/Cart.vue');
+Vue.use(VueRouter);
 
 const routes = [
   {
@@ -42,11 +41,11 @@ const routes = [
     name: 'Cart',
     component: Cart
   }
-]
+];
 
 const router = new VueRouter({
   mode: 'history',
   routes
-})
+});
 
-export default router
+export default router;

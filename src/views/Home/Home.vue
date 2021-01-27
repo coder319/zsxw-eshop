@@ -1,120 +1,120 @@
 <template>
-  <div class="home">
-    <nav-bar></nav-bar>
-    <div class="cm_content">
-      <div class="cm_main clearfix">
-<!--        顶部轮播图-->
-        <a-carousel class="home_carousel" autoplay>
-          <div class="slide"><img src="../../assets/image/home_banner_slide1.jpg" alt="1"></div>
-          <div class="slide"><img src="../../assets/image/home_banner_slide1.jpg" alt="2"></div>
-          <div class="slide"><img src="../../assets/image/home_banner_slide1.jpg" alt="3"></div>
-          <div class="slide"><img src="../../assets/image/home_banner_slide1.jpg" alt="4"></div>
-        </a-carousel>
-<!--        左侧列表-->
-        <div class="lf lf_box">
-          <p class="title">
-            重点推荐
-          </p>
-          <ul lf_list>
-            <li v-for="i in lf_list1" class="list_item">{{i.text}}</li>
-          </ul>
-          <p class="title">
-            排行榜
-          </p>
-          <ul lf_list>
-            <li v-for="i in lf_list2" class="list_item">{{i.text}}</li>
-          </ul>
+    <div class="home">
+        <nav-bar></nav-bar>
+        <div class="cm_content">
+            <div class="cm_main clearfix">
+                <!--        顶部轮播图-->
+                <a-carousel class="home_carousel" autoplay>
+                    <div class="slide"><img src="../../assets/image/home_banner_slide1.jpg" alt="1" /></div>
+                    <div class="slide"><img src="../../assets/image/home_banner_slide1.jpg" alt="2" /></div>
+                    <div class="slide"><img src="../../assets/image/home_banner_slide1.jpg" alt="3" /></div>
+                    <div class="slide"><img src="../../assets/image/home_banner_slide1.jpg" alt="4" /></div>
+                </a-carousel>
+                <!--        左侧列表-->
+                <div class="lf lf_box">
+                    <p class="title">
+                        重点推荐
+                    </p>
+                    <ul lf_list>
+                        <li v-for="(i,index) in lf_list1" :key="index" class="list_item">{{ i.text }}</li>
+                    </ul>
+                    <p class="title">
+                        排行榜
+                    </p>
+                    <ul lf_list>
+                        <li v-for="(i,index) in lf_list2" :key="index" class="list_item">{{ i.text }}</li>
+                    </ul>
+                </div>
+                <!--        主体右侧盒子-->
+                <div class="lf rt_box">
+                    <span class="title">
+                        特价专区
+                    </span>
+                    <div class="content clearfix">
+                        <book class="lf tjzq_book"></book>
+                        <book class="lf tjzq_book"></book>
+                        <book class="lf tjzq_book"></book>
+                        <book class="lf tjzq_book"></book>
+                    </div>
+                    <span class="title">
+                        畅销书籍
+                    </span>
+                    <div class="content clearfix">
+                        <book class="lf tjzq_book"></book>
+                        <book class="lf tjzq_book"></book>
+                        <book class="lf tjzq_book"></book>
+                        <book class="lf tjzq_book"></book>
+                    </div>
+                    <span class="title">
+                        新书上架
+                    </span>
+                    <div class="content clearfix">
+                        <book class="lf tjzq_book"></book>
+                        <book class="lf tjzq_book"></book>
+                        <book class="lf tjzq_book"></book>
+                        <book class="lf tjzq_book"></book>
+                    </div>
+                </div>
+            </div>
         </div>
-<!--        主体右侧盒子-->
-        <div class="lf rt_box">
-          <span class="title">
-            特价专区
-          </span>
-          <div class="content clearfix">
-            <book class="lf tjzq_book"></book>
-            <book class="lf tjzq_book"></book>
-            <book class="lf tjzq_book"></book>
-            <book class="lf tjzq_book"></book>
-          </div>
-          <span class="title">
-            畅销书籍
-          </span>
-          <div class="content clearfix">
-            <book class="lf tjzq_book"></book>
-            <book class="lf tjzq_book"></book>
-            <book class="lf tjzq_book"></book>
-            <book class="lf tjzq_book"></book>
-          </div>
-          <span class="title">
-            新书上架
-          </span>
-          <div class="content clearfix">
-            <book class="lf tjzq_book"></book>
-            <book class="lf tjzq_book"></book>
-            <book class="lf tjzq_book"></book>
-            <book class="lf tjzq_book"></book>
-          </div>
-        </div>
-      </div>
+        <cm_footer></cm_footer>
     </div>
-    <cm_footer></cm_footer>
-  </div>
 </template>
 
 <script>
-import navBar from "components/NavBar"
-import cm_footer from "components/Footer"
-import Book from "components/Book"
-import { Carousel } from "ant-design-vue"
+import navBar from 'components/NavBar';
+import cm_footer from 'components/Footer';
+import Book from 'components/Book';
+import { Carousel } from 'ant-design-vue';
 export default {
-  name: 'Home',
-  components: {
-    navBar,
-    cm_footer,
-    Book,
-    ACarousel:Carousel
-  },
-  data() {
-    return {
-      lf_list1:[
-        {
-          text: '打折书目',
-          path: ''
-        },
-        {
-          text: '预售专区',
-          path: ''
-        },
-        {
-          text: '电子书专区',
-          path: ''
-        },
-        {
-          text: '新书上架',
-          path: ''
-        }
-      ],
-      lf_list2:[
-        {
-          text: '新书畅销排行',
-          path: ''
-        },
-        {
-          text: '网络小说排行',
-          path: ''
-        },
-        {
-          text: '原创小说排行',
-          path: ''
-        }
-      ]
+    name: 'Home',
+    components: {
+        navBar,
+        cm_footer,
+        Book,
+        ACarousel: Carousel
+    },
+    data() {
+        return {
+            lf_list1: [
+                {
+                    text: '打折书目',
+                    path: ''
+                },
+                {
+                    text: '预售专区',
+                    path: ''
+                },
+                {
+                    text: '电子书专区',
+                    path: ''
+                },
+                {
+                    text: '新书上架',
+                    path: ''
+                }
+            ],
+            lf_list2: [
+                {
+                    text: '新书畅销排行',
+                    path: ''
+                },
+                {
+                    text: '网络小说排行',
+                    path: ''
+                },
+                {
+                    text: '原创小说排行',
+                    path: ''
+                }
+            ]
+        };
+    },
+    computed: {
+    },
+    methods: {
     }
-  },
-  computed: {
-  },
-  methods:{
-  }
-}
+};
 </script>
 
 <style lang="less">

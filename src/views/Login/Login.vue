@@ -2,93 +2,93 @@
  * @Description: 登陆页面
  * @Author: Wangtr
  * @Date: 2020-12-31 10:54:21
- * @LastEditTime: 2021-01-22 14:10:53
+ * @LastEditTime: 2021-01-22 18:30:14
  * @LastEditors: Wangtr
- * @Reference: 
+ * @Reference:
 -->
 <template>
-  <div class="background">
-    <!-- <div class="bgc">
+    <div class="background">
+        <!-- <div class="bgc">
       <img :src=bgcsrc alt="bgc">
     </div> -->
-    <div class="main">
-      <div class="top">
-        <img :src=bgcsrc alt="logo" @click="toRoute('/')">
-      </div>
-      <a-form-model :model="loginForm" :label-col="{span:4, offset: 4}" :wrapper-col="{span:8}">
-        <a-form-model-item label="用户名" prop="loginName">
-          <a-input v-model="loginForm.loginName"></a-input>
-        </a-form-model-item>
-        <a-form-model-item label="密码" prop="loginPwd">
-          <a-input type="password" v-model="loginForm.loginPwd"></a-input>
-        </a-form-model-item>
-        <a-form-model-item label="验证码" prop="code">
-          <a-input v-model="loginForm.code"></a-input>
-        </a-form-model-item>
-        <a-tooltip placement="top" :mouseLeaveDelay="0" overlayClassName="tip">
-          <template slot="title">
-            <span>点击刷新验证码</span>
-          </template>
-          <img class="vcode" :src=vcodeImg alt="vcode" @click="getVcode()">
-        </a-tooltip>
-        <a-form-model-item :wrapper-col="{ span: 6, offset: 10 }">
-          <a-button
-            type="primary"
-            style="margin-right: 50px"
-            @click="login()"
-          >登陆</a-button>
-          <a-button>返回</a-button>
-        </a-form-model-item>
-      </a-form-model>
+        <div class="main">
+            <div class="top">
+                <img :src="bgcsrc" alt="logo" @click="toRoute('/')" />
+            </div>
+            <a-form-model :model="loginForm" :label-col="{span:4, offset: 4}" :wrapper-col="{span:8}">
+                <a-form-model-item label="用户名" prop="loginName">
+                    <a-input v-model="loginForm.loginName"></a-input>
+                </a-form-model-item>
+                <a-form-model-item label="密码" prop="loginPwd">
+                    <a-input v-model="loginForm.loginPwd" type="password"></a-input>
+                </a-form-model-item>
+                <a-form-model-item label="验证码" prop="code">
+                    <a-input v-model="loginForm.code"></a-input>
+                </a-form-model-item>
+                <a-tooltip placement="top" :mouse-leave-delay="0" overlay-class-name="tip">
+                    <template slot="title">
+                        <span>点击刷新验证码</span>
+                    </template>
+                    <img class="vcode" :src="vcodeImg" alt="vcode" @click="getVcode()" />
+                </a-tooltip>
+                <a-form-model-item :wrapper-col="{ span: 6, offset: 10 }">
+                    <a-button
+                        type="primary"
+                        style="margin-right: 50px"
+                        @click="login()"
+                    >登陆</a-button>
+                    <a-button>返回</a-button>
+                </a-form-model-item>
+            </a-form-model>
+        </div>
     </div>
-  </div>
-  
+
 </template>
 
 <script>
-import { Input, Button, Tooltip } from 'ant-design-vue'
+import { Input, Button, Tooltip } from 'ant-design-vue';
 export default {
-  name: "Login",
-  components: {
-    AInput: Input,
-    AButton: Button,
-    ATooltip: Tooltip,
-  },
-  data () {
-    return {
-      bgcsrc: require('@/assets/image/login_bgc.jpg'),
-      vcodeImg: '',
-      loginForm:{
-        code: '',
-        codeUuid: '',
-        loginName: "1111@qq.com",
-        loginPwd: "123456"
-      }
-    };
-  },
-  created() {
-    this.getVcode()
-  },
-  methods: {
-    login() {
-      this.$http.login(this.loginForm).then(res => {
-        // console.log(res);
-        Object.keys(res).forEach(val => {
-          localStorage.setItem(val,res[val])
-        })
-      })
+    name: 'Login',
+    components: {
+        AInput: Input,
+        AButton: Button,
+        ATooltip: Tooltip
     },
-    getVcode() {
-      this.$http.getVerificationCode().then(res => {
-        this.vcodeImg = res.code
-        this.loginForm.codeUuid = res.uuid
-      })
+    data() {
+        return {
+            bgcsrc: require('@/assets/image/login_bgc.jpg'),
+            vcodeImg: '',
+            loginForm: {
+                code: '',
+                codeUuid: '',
+                loginName: '1111@qq.com',
+                loginPwd: '123456'
+            }
+        };
     },
-    toRoute(path) {
-      this.$router.push(path)
+    created() {
+        this.getVcode();
+    },
+    methods: {
+        login() {
+            this.$http.login(this.loginForm).then(res => {
+                // console.log(res);
+                Object.keys(res).forEach(val => {
+                    localStorage.setItem(val, res[val]);
+                });
+            });
+        },
+        getVcode() {
+            this.$http.getVerificationCode().then(res => {
+                this.vcodeImg = res.code;
+                this.loginForm.codeUuid = res.uuid;
+            });
+        },
+        toRoute(path) {
+            this.$router.push(path);
+        }
     }
-  }
-}
+};
 </script>
 
 <style lang="less" scoped>
