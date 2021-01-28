@@ -1,113 +1,112 @@
+<!--
+ * @Description: 购物车
+ * @Author: Wangtr
+ * @Date: 2021-01-27 16:28:10
+ * @LastEditTime: 2021-01-28 17:25:46
+ * @LastEditors: Wangtr
+ * @Reference:
+-->
 <template>
-    <!--    <backwrap>-->
-    <div class="wrap">
-        <div style="margin-bottom: 16px">
-            <span style="margin-left: 8px">
-                <template v-if="hasSelected">
-                    {{ `已选择 ${selectedRowKeys.length} 项` }}
-                </template>
-            </span>
-        </div>
-        <a-table
-            :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
-            :columns="columns"
-            :data-source="data"
-        ></a-table>
-        <!--在这那点是写那个右下角页码的哦，我觉得没得必要存在感觉在哪里有点突兀还影响布局-->
-        <div class="wrap_push">
-            <div class="SUM_number">
-                {{ SUM_Price }}
+    <div>
+        <nav-bar></nav-bar>
+        <div class="cm_content cart_content clearfix">
+            <div class="content_side lf"></div>
+            <div class="content_main lf">
+                <section class="table_header">
+                    <span class="check_box">
+                        <a-checkbox></a-checkbox>
+                    </span>
+                    <span class="commodity">商品</span>
+                    <span class="price">单价</span>
+                    <span class="num">数量</span>
+                    <span class="item_price">小结</span>
+                    <!-- <span class="total_price">总价</span> -->
+                </section>
+                <a-checkbox-group>
+                    <section v-for="i in 10" :key="i" class="list_item">
+                        <span class="check_box">
+                            <a-checkbox></a-checkbox>
+                        </span>
+                        <span class="commodity">
+                            <commodity></commodity>
+                        </span>
+                    </section>
+                </a-checkbox-group>
             </div>
-            <button class="pay" onclick="alert(123456)">
-                前往支付
-            </button>
         </div>
     </div>
-<!--    </backwrap>-->
 </template>
+
 <script>
-    /*    import backwrap from  "../../assets/component/backwrap"*/
-const columns = [
-    {
-        title: '名称',
-        dataIndex: 'name'
-    },
-    {
-        title: '单价/元',
-        dataIndex: 'Price'
-    },
-    {
-        title: '数量',
-        dataIndex: 'number'
-    },
-    {
-        title: '小计',
-        dataIndex: 'Prices'
-    },
-    {
-        title: '操作'
-    }
-];
-
-const data = [];
-for (let i = 0; i < 5/* x.length */; i++) {
-    data.push({
-        key: i,
-        name: /* x[i].name*/ `${i}`,
-        Price: 32,
-        number: 1, /* 我这么去加按钮哦 还有点击事件*/
-        Prices: 32,
-        action: '' /* 我这么去加按钮哦 还有点击事件*/
-    });
-}
-
+import navBar from 'components/FixedNav';
+import Commodity from './components/Commodity';
+import { Checkbox } from 'ant-design-vue';
 export default {
+    name: 'Cart',
+    components: {
+        navBar,
+        Commodity,
+        ACheckbox: Checkbox
+    },
     data() {
         return {
-            data,
-            columns,
-            selectedRowKeys: [], // Check here to configure the default column
-            // 这我也不知道是干啥的
-            loading: false, // 这我也不知道是干啥的
-            SUM_Price: '¥' + 32
         };
-    },
-    computed: {
-        hasSelected() {
-            return this.selectedRowKeys.length > 0;
-        }
-    },
-    methods: {
-        onSelectChange(selectedRowKeys) {
-            console.log('selectedRowKeys changed: ', selectedRowKeys);
-            this.selectedRowKeys = selectedRowKeys;
-        }
     }
-    /* components: {
-            backwrap
-        },*/
 };
 </script>
-<style>
-    .wrap{
-        width: 1200px;
-        margin: 0 auto;
+
+<style lang="less" scoped>
+span{
+    display: table-cell;
+}
+.cart_content{
+    padding: 0;
+}
+.content_side, .content_main{
+    height: calc( 100vh - @navHeight );
+    overflow-y: scroll;
+    background-color: #fff;
+}
+
+.content_side{
+    box-sizing: border-box;
+    width: 20vw;
+    border-right: 3px solid #f6f6f6;
+}
+
+.content_main{
+    width: 80vw;
+    .check_box{
+        width: 40px;
+        vertical-align: middle;
     }
-    .wrap_push{
-        display: flex;
-        justify-content:flex-end;
+
+    /deep/.price,/deep/.item_price{
+        width: 10vw;
+        vertical-align: middle;
     }
-    .SUM_number{
-        color: red;
-        font-size: 32px;
-        font-family: "Arial Black",serif;
-        margin: 1px 10px;
+    /deep/.num{
+        width: 140px;
+        vertical-align: middle;
     }
-    .pay{
-        margin-left: 20px;
-        font-size: 20px;
-        padding: 6px;
-        height: 48px;
-        font-family: 黑体,serif;
+    .table_header{
+        padding: 20px;
+        line-height: 60px;
+        border-bottom: 1px solid #dddddd;
+        .commodity{
+            padding: 0 20px;
+            width: calc( 35vw + 185px);
+        }
     }
+    .list_item{
+        display: inline-block;
+        padding: 0 20px;
+        border-bottom: 1px solid #dddddd;
+        .commodity{
+            vertical-align: middle;
+            padding: 0 20px;
+            width: calc( 80vw - 40px );
+        }
+    }
+}
 </style>

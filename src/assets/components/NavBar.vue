@@ -2,7 +2,7 @@
  * @Description:  导航栏
  * @Author: Wangtr
  * @Date: 2020-12-05 01:03:36
- * @LastEditTime: 2021-01-27 17:24:29
+ * @LastEditTime: 2021-01-28 16:21:31
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -62,42 +62,43 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .cm_nav{
-  height: @navHeight;
-  line-height: @navHeight;
-  width: 100%;
-  min-width: 1200px;
-  border-bottom: 1px solid #f6f6f6;
-  box-shadow: 0px 2px 3px #eaeaea;
-  background-color: #fff;
+    box-sizing: border-box;
+    height: @navHeight;
+    line-height: @navHeight;
+    width: 100%;
+    min-width: 1200px;
+    border-bottom: 1px solid #f6f6f6;
+    box-shadow: 0px 2px 3px #eaeaea;
+    background-color: #fff;
 }
 .logo{
-  height: 54px;
-  margin: 5px 40px;
-  width: 202px;
-  background-color: pink;
+    height: 54px;
+    margin: 5px 40px;
+    width: 202px;
+    background-color: pink;
 }
 .search{
-  width: 25%;
+    width: 25%;
 }
 .nav_items{
-  margin: 0 35px;
-  .nav_item{
-    padding: 0 25px;
-    height: 64px;
-    line-height: 64px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #999999;
-  }
-  .cur,.nav_item:hover{
-    font-weight: bold;
-    color: #1e85e9;
-    border-bottom: 2px solid #1e85e9;
-  }
+    margin: 0 35px;
+    .nav_item{
+        padding: 0 25px;
+        height: 64px;
+        line-height: 64px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #999999;
+    }
+    .cur,.nav_item:hover{
+        font-weight: bold;
+        color: #1e85e9;
+        border-bottom: 2px solid #1e85e9;
+    }
 }
 .nav_avatar{
-  margin: 12px 15px 12px 12px;
+    margin: 12px 15px 12px 12px;
 }
 </style>

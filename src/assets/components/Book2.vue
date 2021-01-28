@@ -1,3 +1,11 @@
+<!--
+ * @Description:
+ * @Author: Wangtr
+ * @Date: 2020-12-11 14:06:46
+ * @LastEditTime: 2021-01-28 15:14:11
+ * @LastEditors: Wangtr
+ * @Reference:
+-->
 <template>
     <div class="cm_book2 clearfix">
         <img class="lf" :src="book.cover" alt="cover" />

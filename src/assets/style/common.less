@@ -1,3 +1,5 @@
+@import "./variable.less";
+
 * {
   padding: 0;
   margin: 0;
@@ -21,14 +23,14 @@ ul li{
 
 .cm_content{
   width: 100%;
-  min-height: 725px;
+  min-height: calc(100vh - @navHeight - @footerHeight);
   padding: 20px 0;
   background-color: #f6f6f6;
 }
 .cm_content .cm_main{
   padding: 0 30px;
   width: 1200px;
-  min-height: 725px;
+  min-height: calc(100vh - @navHeight - @footerHeight - 40px);
   margin: 0 auto;
   background-color: #fff;
   box-shadow: 0 2px 2px #f6f6f6;
@@ -74,4 +76,13 @@ ul li{
 
 .clearfix:after {
   clear: both;
+}
+// 滚动条样式
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #c3c3c3;
 }

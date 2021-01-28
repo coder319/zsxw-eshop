@@ -2,7 +2,7 @@
  * @Description: 路由入口文件
  * @Author: Wangtr
  * @Date: 2020-11-14 09:37:58
- * @LastEditTime: 2021-01-27 16:29:47
+ * @LastEditTime: 2021-01-28 14:57:06
  * @LastEditors: Wangtr
  */
 import Vue from 'vue';
@@ -39,7 +39,7 @@ const routes = [
   {
     path: '/cart',
     name: 'Cart',
-    component: () => import('../views/Cart/newCart.vue')
+    component: () => import('../views/Cart/Cart.vue')
   }
 ];
 
