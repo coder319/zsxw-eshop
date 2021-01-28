@@ -2,7 +2,7 @@
  * @Description: 购物车
  * @Author: Wangtr
  * @Date: 2021-01-27 16:28:10
- * @LastEditTime: 2021-01-28 17:25:46
+ * @LastEditTime: 2021-01-28 17:40:49
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import navBar from 'components/FixedNav';
+import navBar from 'components/NavBar';
 import Commodity from './components/Commodity';
 import { Checkbox } from 'ant-design-vue';
 export default {

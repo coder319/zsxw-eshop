@@ -2,7 +2,7 @@
  * @Description: 上滚显示，下滚隐藏的导航栏二次封装
  * @Author: Wangtr
  * @Date: 2021-01-27 15:57:29
- * @LastEditTime: 2021-01-27 16:22:19
+ * @LastEditTime: 2021-01-28 17:35:14
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -39,11 +39,11 @@ export default {
             var scroll = scrollTop - this.i;
             this.i = scrollTop;
             if (scroll < 0) {
-                console.log('up');
+                // console.log('up');
                 this.isFixed = true;
             } else {
                 // 添加你想要的事件
-                console.log('down');
+                // console.log('down');
                 this.isFixed = false;
             }
         }
