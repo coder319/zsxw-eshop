@@ -2,7 +2,7 @@
  * @Description: 首页
  * @Author: Wangtr
  * @Date: 2020-11-14 09:37:58
- * @LastEditTime: 2021-01-27 17:20:43
+ * @LastEditTime: 2021-02-03 14:46:40
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -164,7 +164,7 @@ export default {
     cursor: pointer;
   }
   .list_item:hover{
-    color: #1e85e9;
+    color: @linkColor;
   }
 }
 .rt_box{
@@ -177,7 +177,7 @@ export default {
     cursor: pointer;
   }
   .title:hover{
-    color: #1e85e9;
+    color: @linkColor;
   }
   .content{
     margin-top: 10px;

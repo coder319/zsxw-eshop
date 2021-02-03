@@ -2,7 +2,7 @@
  * @Description: 购物车
  * @Author: Wangtr
  * @Date: 2021-01-27 16:28:10
- * @LastEditTime: 2021-01-28 17:40:49
+ * @LastEditTime: 2021-02-03 14:18:10
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -60,6 +60,7 @@ span{
     display: table-cell;
 }
 .cart_content{
+    width: 100vw;
     padding: 0;
 }
 .content_side, .content_main{
@@ -76,13 +77,14 @@ span{
 
 .content_main{
     width: 80vw;
+    box-sizing: border-box;
     .check_box{
         width: 40px;
         vertical-align: middle;
     }
 
     /deep/.price,/deep/.item_price{
-        width: 10vw;
+        width: 8vw;
         vertical-align: middle;
     }
     /deep/.num{

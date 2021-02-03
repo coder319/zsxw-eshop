@@ -2,13 +2,12 @@
  * @Description: 路由入口文件
  * @Author: Wangtr
  * @Date: 2020-11-14 09:37:58
- * @LastEditTime: 2021-01-28 14:57:06
+ * @LastEditTime: 2021-02-03 14:06:23
  * @LastEditors: Wangtr
  */
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-// 懒加载页面组件
-// const Cart = () => import('../views/Cart/Cart.vue');
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -40,6 +39,11 @@ const routes = [
     path: '/cart',
     name: 'Cart',
     component: () => import('../views/Cart/Cart.vue')
+  },
+  {
+    path: '/sort',
+    name: 'Sort',
+    component: () => import('../views/Sort/Sort.vue')
   }
 ];
 

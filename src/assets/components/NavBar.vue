@@ -2,7 +2,7 @@
  * @Description:  导航栏
  * @Author: Wangtr
  * @Date: 2020-12-05 01:03:36
- * @LastEditTime: 2021-01-28 16:21:31
+ * @LastEditTime: 2021-02-03 14:45:11
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -12,14 +12,22 @@
         <div class="search lf">
             <a-input
                 v-model="search_value"
+                type="search"
                 placeholder="输入想要搜索的商品"
+                @search="search()"
             >
-                <a-icon slot="suffix" type="search"></a-icon>
+                <a-icon slot="suffix" type="search" @click="search()"></a-icon>
             </a-input>
         </div>
         <ul class="nav_items lf clearfix">
-            <li v-for="(item,index) in items" :key="index" class="nav_item lf">
-                {{ item }}
+            <li
+                v-for="(item,index) in items"
+                :key="index"
+                class="nav_item lf"
+                :class="{'cur':$route.path===item.path}"
+                @click="goto(item.path)"
+            >
+                {{ item.label }}
             </li>
         </ul>
         <a-avatar
@@ -50,13 +58,27 @@ export default {
     },
     data() {
         return {
-            items: ['首 页', '分 类', '数 据'],
+            // items: ['首 页', '分 类', '购物车'],
+            items: [
+                {
+                    label: '首 页',
+                    path: '/home'
+                }, {
+                    label: '分 类',
+                    path: '/sort'
+                }, {
+                    label: '购物车',
+                    path: '/cart'
+                }],
             search_value: ''
         };
     },
     methods: {
         goto(path) {
             this.$router.push(path);
+        },
+        search() {
+            console.log(this.search_value);
         }
     }
 };
@@ -80,22 +102,27 @@ export default {
     background-color: pink;
 }
 .search{
+    width: 15%;
+    transition: .35s;
+}
+.search:focus-within{
     width: 25%;
 }
 .nav_items{
     margin: 0 35px;
     .nav_item{
         padding: 0 25px;
+        margin: 0 5px;
         height: 64px;
         line-height: 64px;
         font-size: 18px;
         font-weight: bold;
         color: #999999;
     }
-    .cur,.nav_item:hover{
+    .nav_item:hover , .cur {
         font-weight: bold;
-        color: #1e85e9;
-        border-bottom: 2px solid #1e85e9;
+        color: @linkColor;
+        border-bottom: 2px solid @linkColor;
     }
 }
 .nav_avatar{
