@@ -2,7 +2,7 @@
  * @Description: 搜索结果页
  * @Author: Wangtr
  * @Date: 2020-12-11 13:40:08
- * @LastEditTime: 2021-01-27 16:23:32
+ * @LastEditTime: 2021-02-03 16:17:14
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -30,6 +30,11 @@ export default {
     name: 'Search',
     components: {
         navBar, cmFooter, Book
+    },
+    data() {
+        return {
+
+        };
     }
 };
 </script>

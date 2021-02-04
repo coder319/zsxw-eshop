@@ -2,7 +2,7 @@
  * @Description: 用户个人界面
  * @Author: Wangtr
  * @Date: 2020-12-02 20:34:50
- * @LastEditTime: 2021-01-27 15:29:03
+ * @LastEditTime: 2021-02-04 10:54:29
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -17,7 +17,9 @@
                     <a-tag color="green">Lv.1</a-tag>
                 </div>
                 <div class="charts_box">
-                    <div ref="chart1" style="height:300px;width:calc(100% / 3);"></div>
+                    <sunburst></sunburst>
+                    <chart-line></chart-line>
+                    <chart-radar></chart-radar>
                 </div>
             </div>
         </div>
@@ -29,44 +31,25 @@
 import navBar from 'components/FixedNav';
 import cmFooter from 'components/Footer';
 import { Avatar, Tag } from 'ant-design-vue';
-const echart = require('echarts');
+// 表格导入
+import Sunburst from './components/ChartSunburst';
+import ChartLine from './components/ChartLine';
+import ChartRadar from './components/ChartRadar';
 
 export default {
     name: 'Profile',
     components: {
+        AAvatar: Avatar,
+        ATag: Tag,
         navBar,
         cmFooter,
-        AAvatar: Avatar,
-        ATag: Tag
+        Sunburst,
+        ChartLine,
+        ChartRadar
     },
     data() {
         return {
         };
-    },
-    mounted() {
-        const myEchart = echart.init(this.$refs.chart1);
-        // 指定图表的配置项和数据
-        const option = {
-            title: {
-                text: 'ECharts 入门示例'
-            },
-            tooltip: {},
-            legend: {
-                data: ['销量']
-            },
-            xAxis: {
-                data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-            },
-            yAxis: {},
-            series: [{
-                name: '销量',
-                type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
-            }]
-        };
-
-        // 使用刚指定的配置项和数据显示图表。
-        myEchart.setOption(option);
     }
 };
 

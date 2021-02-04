@@ -1,13 +1,13 @@
 <!--
- * @Description: 上滚显示，下滚隐藏的导航栏二次封装
+ * @Description: 上滚显示，下滚隐藏的导航栏二次封装(因为监听的window的scroll，所以必须是整个body上面的滚动)
  * @Author: Wangtr
  * @Date: 2021-01-27 15:57:29
- * @LastEditTime: 2021-01-28 17:35:14
+ * @LastEditTime: 2021-02-03 15:38:42
  * @LastEditors: Wangtr
  * @Reference:
 -->
 <template>
-    <a-affix v-if="isFixed" :offset-top="top">
+    <a-affix v-if="isFixed" :offset-top="0">
         <nav-bar></nav-bar>
     </a-affix>
     <nav-bar v-else></nav-bar>
