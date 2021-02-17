@@ -2,7 +2,7 @@
  * @Description:
  * @Author: Wangtr
  * @Date: 2021-02-04 10:44:55
- * @LastEditTime: 2021-02-04 10:53:07
+ * @LastEditTime: 2021-02-04 11:17:11
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -84,7 +84,7 @@ export default {
 
 <style lang="less" scoped>
 .chart{
-    width: 100%;
-    height: 400px;
+    width: 600px;
+    height: 500px;
 }
 </style>

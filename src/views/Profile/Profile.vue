@@ -2,7 +2,7 @@
  * @Description: 用户个人界面
  * @Author: Wangtr
  * @Date: 2020-12-02 20:34:50
- * @LastEditTime: 2021-02-04 10:54:29
+ * @LastEditTime: 2021-02-04 11:16:39
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -17,9 +17,13 @@
                     <a-tag color="green">Lv.1</a-tag>
                 </div>
                 <div class="charts_box">
-                    <sunburst></sunburst>
-                    <chart-line></chart-line>
-                    <chart-radar></chart-radar>
+                    <section class="row first_row">
+                        <sunburst></sunburst>
+                        <chart-radar></chart-radar>
+                    </section>
+                    <section class="row">
+                        <chart-line></chart-line>
+                    </section>
                 </div>
             </div>
         </div>
@@ -71,5 +75,14 @@ export default {
 }
 .charts_box{
   margin: 30px 0;
+  overflow: hidden;
+  .row{
+      margin: 20px 0;
+  }
+  .first_row{
+      padding-left: 110px;
+      display: flex;
+      justify-content: space-between;
+  }
 }
 </style>

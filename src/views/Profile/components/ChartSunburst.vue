@@ -2,7 +2,7 @@
  * @Description: 旭日图
  * @Author: Wangtr
  * @Date: 2021-02-04 09:47:27
- * @LastEditTime: 2021-02-04 11:01:39
+ * @LastEditTime: 2021-02-04 11:17:35
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -97,6 +97,6 @@ export default {
 <style lang="less" scoped>
 .sunburst{
     width: 300px;
-    height: 400px;
+    height: 500px;
 }
 </style>
