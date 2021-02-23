@@ -2,7 +2,7 @@
  * @Description: 入口js文件
  * @Author: Wangtr
  * @Date: 2020-11-14 09:37:58
- * @LastEditTime: 2021-01-27 15:03:05
+ * @LastEditTime: 2021-02-23 13:29:25
  * @LastEditors: Wangtr
  */
 import Vue from 'vue';

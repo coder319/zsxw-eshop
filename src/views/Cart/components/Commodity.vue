@@ -2,7 +2,7 @@
  * @Description: 购物车商品组件
  * @Author: Wangtr
  * @Date: 2021-01-28 15:06:44
- * @LastEditTime: 2021-01-28 17:25:00
+ * @LastEditTime: 2021-02-23 15:23:49
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -12,20 +12,22 @@
             <img class="lf" :src="data.cover" alt="cover" />
             <section class="describe lf">
                 <div class="name">{{ data.name }}</div>
-                <div class="des f-oh2">{{ data.des }}</div>
+                <div class="desc f-oh2">{{ data.desc }}</div>
                 <div class="author">{{ data.author }}</div>
                 <div class="tag">{{ data.tag }}</div>
+                <div class="seller f-otw">{{ data.seller }}</div>
             </section>
             <section class="price lf">￥{{ data.price.toFixed(2) }}</section>
             <section class="input_number num lf">
                 <a-input-number
                     v-model="commodityNum"
                     size="large"
+                    :precision="0"
                     :min="1"
                 ></a-input-number>
             </section>
             <section class="item_price lf">
-                ￥123
+                ￥{{ total.toFixed(2) }}
             </section>
         </div>
     </div>
@@ -45,12 +47,15 @@ export default {
             // required: true,
             default: () => {
                 return {
+                    cid: 9999,
                     cover: require('@/assets/image/test_cover1.jpg'),
                     name: '书名',
-                    des: '简介',
+                    desc: '简介',
                     author: '作者',
                     tag: '标签',
-                    price: 0.00
+                    num: 1,
+                    price: 28.90,
+                    seller: '商家'
                 };
             }
         }
@@ -59,6 +64,19 @@ export default {
         return {
             commodityNum: 1
         };
+    },
+    computed: {
+        total() {
+            return this.data.price * this.commodityNum;
+        }
+    },
+    watch: {
+        total(newVal) {
+            this.$emit('changeTatol', this.data.cid, newVal);
+        }
+    },
+    created() {
+        this.commodityNum = this.data.num;
     }
 };
 </script>
@@ -84,7 +102,7 @@ export default {
             font-size: 24px;
             font-weight: bold;
         }
-        .des{
+        .desc{
             height: 56px;
             font-size: 18px;
             color: #888888;

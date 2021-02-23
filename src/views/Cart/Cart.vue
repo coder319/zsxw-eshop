@@ -2,7 +2,7 @@
  * @Description: 购物车
  * @Author: Wangtr
  * @Date: 2021-01-27 16:28:10
- * @LastEditTime: 2021-02-03 14:18:10
+ * @LastEditTime: 2021-02-23 15:50:38
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -20,15 +20,18 @@
                     <span class="price">单价</span>
                     <span class="num">数量</span>
                     <span class="item_price">小结</span>
-                    <!-- <span class="total_price">总价</span> -->
+                    <span class="total_price">总价:{{ allTotal }}</span>
                 </section>
-                <a-checkbox-group>
-                    <section v-for="i in 10" :key="i" class="list_item">
+                <a-checkbox-group @change="onChange">
+                    <section v-for="(item ,i) in listData" :key="i" class="list_item">
                         <span class="check_box">
-                            <a-checkbox></a-checkbox>
+                            <a-checkbox :value="item.cid"></a-checkbox>
                         </span>
                         <span class="commodity">
-                            <commodity></commodity>
+                            <commodity
+                                :data="item"
+                                @changeTatol="changeTotalList()"
+                            ></commodity>
                         </span>
                     </section>
                 </a-checkbox-group>
@@ -41,16 +44,132 @@
 import navBar from 'components/NavBar';
 import Commodity from './components/Commodity';
 import { Checkbox } from 'ant-design-vue';
+import login from '@/mixin/login';
 export default {
     name: 'Cart',
     components: {
         navBar,
         Commodity,
-        ACheckbox: Checkbox
+        ACheckbox: Checkbox,
+        ACheckboxGroup: Checkbox.Group
     },
+    mixins: [login],
     data() {
         return {
+            listData: [
+                {
+                    cid: 1,
+                    cover: require('@/assets/image/test_cover1.jpg'),
+                    name: '书名',
+                    desc: '简介',
+                    author: '作者',
+                    tag: '标签',
+                    num: 1,
+                    price: 28.90,
+                    seller: '商家'
+                },
+                {
+                    cid: 2,
+                    cover: require('@/assets/image/test_cover1.jpg'),
+                    name: '书名',
+                    desc: '简介',
+                    author: '作者',
+                    tag: '标签',
+                    num: 2,
+                    price: 8.70,
+                    seller: '商家'
+                },
+                {
+                    cid: 3,
+                    cover: require('@/assets/image/test_cover1.jpg'),
+                    name: '书名',
+                    desc: '简介',
+                    author: '作者',
+                    tag: '标签',
+                    num: 4,
+                    price: 6.50,
+                    seller: '商家'
+                },
+                {
+                    cid: 4,
+                    cover: require('@/assets/image/test_cover1.jpg'),
+                    name: '书名',
+                    desc: '简介',
+                    author: '作者',
+                    tag: '标签',
+                    num: 2,
+                    price: 58.90,
+                    seller: '商家'
+                },
+                {
+                    cid: 5,
+                    cover: require('@/assets/image/test_cover1.jpg'),
+                    name: '书名',
+                    desc: '简介',
+                    author: '作者',
+                    tag: '标签',
+                    num: 1,
+                    price: 28.90,
+                    seller: '商家'
+                },
+                {
+                    cid: 6,
+                    cover: require('@/assets/image/test_cover1.jpg'),
+                    name: '书名',
+                    desc: '简介',
+                    author: '作者',
+                    tag: '标签',
+                    num: 3,
+                    price: 27.90,
+                    seller: '商家'
+                },
+                {
+                    cid: 7,
+                    cover: require('@/assets/image/test_cover1.jpg'),
+                    name: '书名',
+                    desc: '简介',
+                    author: '作者',
+                    tag: '标签',
+                    num: 2,
+                    price: 18.90,
+                    seller: '商家'
+                }
+            ],
+            totalList: {
+                1: 123.6,
+                2: 123.6,
+                3: 123.6,
+                4: 123.6,
+                5: 123.6
+            },
+            checked: []
         };
+    },
+    computed: {
+        allTotal() {
+            let total = 0;
+            if (this.checked.length > 0) {
+                this.checked.forEach(val => {
+                    total += this.totalList[val];
+                });
+            }
+            // console.log(total, total.toFixed(2));
+            return total.toFixed(2);
+        }
+    },
+    methods: {
+        onChange(val) {
+            // console.log(val);
+            this.checked = [];
+            this.$nextTick(() => {
+                this.checked = val;
+            });
+        },
+        changeTotalList(cid, newVal) {
+            this.$set(this.totalList, cid, newVal);
+        },
+        pay() {
+        }
     }
 };
 </script>
@@ -94,7 +213,7 @@ span{
     .table_header{
         padding: 20px;
         line-height: 60px;
-        border-bottom: 1px solid #dddddd;
+        border-bottom: 2px solid #f6f6f6;
         .commodity{
             padding: 0 20px;
             width: calc( 35vw + 185px);
@@ -103,7 +222,7 @@ span{
     .list_item{
         display: inline-block;
         padding: 0 20px;
-        border-bottom: 1px solid #dddddd;
+        border-bottom: 2px solid #f6f6f6;
         .commodity{
             vertical-align: middle;
             padding: 0 20px;
