@@ -2,7 +2,7 @@
  * @Description: 首页
  * @Author: Wangtr
  * @Date: 2020-11-14 09:37:58
- * @LastEditTime: 2021-02-03 14:46:40
+ * @LastEditTime: 2021-02-23 13:11:57
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -74,6 +74,7 @@ import navBar from 'components/FixedNav';
 import cmFooter from 'components/Footer';
 import Book from 'components/Book';
 import { Carousel } from 'ant-design-vue';
+import login from '@/mixin/login';
 export default {
     name: 'Home',
     components: {
@@ -82,6 +83,7 @@ export default {
         Book,
         ACarousel: Carousel
     },
+    mixins: [login],
     data() {
         return {
             lf_list1: [
@@ -119,15 +121,6 @@ export default {
         };
     },
     computed: {
-    },
-    created() {
-        if (!this.$store.state.isLogin) {
-            const userInfo = localStorage.getItem('zsxw_eshop_user_info');
-            if (userInfo) {
-                this.$store.commit('USER_INFO_UPDATE', JSON.parse(userInfo));
-                this.$store.commit('LOGIN');
-            }
-        }
     },
     methods: {
     }

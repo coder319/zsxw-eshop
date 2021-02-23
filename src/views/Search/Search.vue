@@ -2,7 +2,7 @@
  * @Description: 搜索结果页
  * @Author: Wangtr
  * @Date: 2020-12-11 13:40:08
- * @LastEditTime: 2021-02-03 16:17:14
+ * @LastEditTime: 2021-02-23 14:40:26
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -26,11 +26,13 @@
 import navBar from 'components/FixedNav';
 import cmFooter from 'components/Footer';
 import Book from 'components/Book2';
+import login from '@/mixin/login';
 export default {
     name: 'Search',
     components: {
         navBar, cmFooter, Book
     },
+    mixins: [login],
     data() {
         return {
 
