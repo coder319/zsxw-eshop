@@ -2,7 +2,7 @@
  * @Description: 购物车商品组件
  * @Author: Wangtr
  * @Date: 2021-01-28 15:06:44
- * @LastEditTime: 2021-02-23 15:23:49
+ * @LastEditTime: 2021-03-01 14:19:24
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -44,7 +44,6 @@ export default {
         // 商品信息
         data: {
             type: Object,
-            // required: true,
             default: () => {
                 return {
                     cid: 9999,
@@ -71,11 +70,13 @@ export default {
         }
     },
     watch: {
-        total(newVal) {
-            this.$emit('changeTatol', this.data.cid, newVal);
+        commodityNum(newVal) {
+            // console.log('aaaa', this.data.cid);
+            this.$emit('changeTotal', this.data.cid, this.total);
         }
     },
     created() {
+        console.log(this.commodityNum, this.data.num);
         this.commodityNum = this.data.num;
     }
 };

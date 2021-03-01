@@ -2,7 +2,7 @@
  * @Description: 购物车
  * @Author: Wangtr
  * @Date: 2021-01-27 16:28:10
- * @LastEditTime: 2021-02-23 15:50:38
+ * @LastEditTime: 2021-03-01 14:20:18
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -30,7 +30,7 @@
                         <span class="commodity">
                             <commodity
                                 :data="item"
-                                @changeTatol="changeTotalList()"
+                                @changeTotal="changeTotalList"
                             ></commodity>
                         </span>
                     </section>
@@ -56,91 +56,27 @@ export default {
     mixins: [login],
     data() {
         return {
+            // 商品列表
             listData: [
-                {
-                    cid: 1,
-                    cover: require('@/assets/image/test_cover1.jpg'),
-                    name: '书名',
-                    desc: '简介',
-                    author: '作者',
-                    tag: '标签',
-                    num: 1,
-                    price: 28.90,
-                    seller: '商家'
-                },
-                {
-                    cid: 2,
-                    cover: require('@/assets/image/test_cover1.jpg'),
-                    name: '书名',
-                    desc: '简介',
-                    author: '作者',
-                    tag: '标签',
-                    num: 2,
-                    price: 8.70,
-                    seller: '商家'
-                },
-                {
-                    cid: 3,
-                    cover: require('@/assets/image/test_cover1.jpg'),
-                    name: '书名',
-                    desc: '简介',
-                    author: '作者',
-                    tag: '标签',
-                    num: 4,
-                    price: 6.50,
-                    seller: '商家'
-                },
-                {
-                    cid: 4,
-                    cover: require('@/assets/image/test_cover1.jpg'),
-                    name: '书名',
-                    desc: '简介',
-                    author: '作者',
-                    tag: '标签',
-                    num: 2,
-                    price: 58.90,
-                    seller: '商家'
-                },
-                {
-                    cid: 5,
-                    cover: require('@/assets/image/test_cover1.jpg'),
-                    name: '书名',
-                    desc: '简介',
-                    author: '作者',
-                    tag: '标签',
-                    num: 1,
-                    price: 28.90,
-                    seller: '商家'
-                },
-                {
-                    cid: 6,
-                    cover: require('@/assets/image/test_cover1.jpg'),
-                    name: '书名',
-                    desc: '简介',
-                    author: '作者',
-                    tag: '标签',
-                    num: 3,
-                    price: 27.90,
-                    seller: '商家'
-                },
-                {
-                    cid: 7,
-                    cover: require('@/assets/image/test_cover1.jpg'),
-                    name: '书名',
-                    desc: '简介',
-                    author: '作者',
-                    tag: '标签',
-                    num: 2,
-                    price: 18.90,
-                    seller: '商家'
-                }
+                // {
+                //     cid: 1,
+                //     cover: require('@/assets/image/test_cover1.jpg'),
+                //     name: '书名',
+                //     desc: '简介',
+                //     author: '作者',
+                //     tag: '标签',
+                //     num: 1,
+                //     price: 28.90,
+                //     seller: '商家'
+                // }
             ],
+            // 每个商品的小结金额对象key=cid,value=num*price
             totalList: {
-                1: 123.6,
-                2: 123.6,
-                3: 123.6,
-                4: 123.6,
-                5: 123.6
+                // 1: 123.6,
+                // 2: 123.6,
+                // 3: 123.6,
+                // 4: 123.6,
+                // 5: 123.6
             },
             checked: []
         };
@@ -157,16 +93,22 @@ export default {
             return total.toFixed(2);
         }
     },
+    created() {
+        this.$http.queryCart().then(res => {
+            this.listData = res.data;
+            this.listData.forEach(val => {
+                // console.log(val.cid, val.num, val.price);
+                this.$set(this.totalList, val.cid, val.num * val.price);
+            });
+        });
+    },
     methods: {
         onChange(val) {
-            // console.log(val);
-            this.checked = [];
-            this.$nextTick(() => {
-                this.checked = val;
-            });
+            this.checked = val;
         },
-        changeTotalList(cid, newVal) {
-            this.$set(this.totalList, cid, newVal);
+        changeTotalList() {
+            // console.log(arguments, arguments[0], arguments[1]);
+            this.$set(this.totalList, arguments[0], arguments[1]);
         },
         pay() {
         }
