@@ -2,7 +2,7 @@
  * @Description:  导航栏
  * @Author: Wangtr
  * @Date: 2020-12-05 01:03:36
- * @LastEditTime: 2021-02-03 14:45:11
+ * @LastEditTime: 2021-03-01 12:47:43
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -30,31 +30,52 @@
                 {{ item.label }}
             </li>
         </ul>
-        <a-avatar
+        <a-tooltip
             v-if="!$store.state.isLogin"
-            icon="user"
-            size="large"
-            class="rt nav_avatar"
-            @click="goto('/login')"
-        ></a-avatar>
-        <a-avatar
+            placement="left"
+        >
+            <template slot="title" class="link">
+                <span
+                    class="tip"
+                >
+                    点击头像登陆
+                </span>
+            </template>
+            <a-avatar
+                icon="user"
+                size="large"
+                class="rt nav_avatar"
+                @click="goto('/login')"
+            ></a-avatar>
+        </a-tooltip>
+        <a-tooltip
             v-else
-            :src="$store.state.USER_INFO.headImg"
-            size="large"
-            class="rt nav_avatar"
-            @click="goto('/profile')"
-        ></a-avatar>
+            placement="left"
+        >
+            <template slot="title">
+                <span class="link tip" @click="logout()">
+                    点击注销
+                </span>
+            </template>
+            <a-avatar
+                :src="$store.state.USER_INFO.headImg"
+                size="large"
+                class="rt nav_avatar"
+                @click="goto('/profile')"
+            ></a-avatar>
+        </a-tooltip>
     </div>
 </template>
 
 <script>
-import { Input, Icon, Avatar } from 'ant-design-vue';
+import { Input, Icon, Avatar, Tooltip } from 'ant-design-vue';
 export default {
     name: 'NavBar',
     components: {
         AInput: Input,
         AIcon: Icon,
-        AAvatar: Avatar
+        AAvatar: Avatar,
+        ATooltip: Tooltip
     },
     data() {
         return {
@@ -78,7 +99,11 @@ export default {
             this.$router.push(path);
         },
         search() {
-            console.log(this.search_value);
+            // console.log(this.search_value);
+        },
+        logout() {
+            localStorage.setItem('zsxw_eshop_user_info', '');
+            this.$store.commit('LOGOUT');
         }
     }
 };
@@ -102,10 +127,12 @@ export default {
     background-color: pink;
 }
 .search{
+    margin-left: 50px;
     width: 15%;
     transition: .35s;
 }
 .search:focus-within{
+    margin-left: 0;
     width: 25%;
 }
 .nav_items{
@@ -127,5 +154,8 @@ export default {
 }
 .nav_avatar{
     margin: 12px 15px 12px 12px;
+}
+.tip{
+    padding: 3px 5px;
 }
 </style>

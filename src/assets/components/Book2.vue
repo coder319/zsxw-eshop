@@ -1,20 +1,20 @@
 <!--
- * @Description:
+ * @Description: 商品项样式二
  * @Author: Wangtr
  * @Date: 2020-12-11 14:06:46
- * @LastEditTime: 2021-01-28 15:14:11
+ * @LastEditTime: 2021-02-28 18:21:31
  * @LastEditors: Wangtr
  * @Reference:
 -->
 <template>
     <div class="cm_book2 clearfix">
-        <img class="lf" :src="book.cover" alt="cover" />
+        <img class="lf" :src="data.cover" alt="cover" />
         <div class="describe lf">
-            <div class="name">{{ book.name }}</div>
-            <div class="des f-oh2">{{ book.des }}</div>
-            <div class="author">{{ book.author }}</div>
-            <div class="tag">{{ book.tag }}</div>
-            <div class="price">￥{{ book.price.toFixed(2) }}</div>
+            <div class="name">{{ data.name }}</div>
+            <div class="desc f-oh2">{{ data.desc }}</div>
+            <div class="author">{{ data.author }}</div>
+            <div class="tag">{{ data.tag }}</div>
+            <div class="price">￥{{ data.price.toFixed(2) }}</div>
         </div>
         <div class="opts lf">
             <a-button shape="circle" icon="star"></a-button>
@@ -32,13 +32,13 @@ export default {
     },
     props: {
         // 接收到的书本数据
-        book: {
+        data: {
             type: Object,
             default: () => {
                 return {
                     cover: require('../../assets/image/test_cover1.jpg'),
                     name: '书名',
-                    des: '简介',
+                    desc: '简介',
                     author: '作者',
                     tag: '标签',
                     price: 0.00
@@ -71,7 +71,7 @@ export default {
       font-size: 24px;
       font-weight: bold;
     }
-    .des{
+    .desc{
       height: 56px;
       font-size: 18px;
       color: #888888;
