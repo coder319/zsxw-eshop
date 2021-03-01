@@ -2,7 +2,7 @@
  * @Description: 请求API
  * @Author: Wangtr
  * @Date: 2020-12-09 23:29:09
- * @LastEditTime: 2021-03-01 16:27:58
+ * @LastEditTime: 2021-03-01 16:54:13
  * @LastEditors: Wangtr
  * @Reference:
  */
@@ -67,9 +67,17 @@ export default {
             method: 'get'
         });
     },
+    // 折线图数据
     getLineData() {
         return axios({
             url: '/api/history/week',
+            method: 'get'
+        });
+    },
+    // 雷达图数据
+    getRadarData() {
+        return axios({
+            url: '/api/history/category',
             method: 'get'
         });
     }

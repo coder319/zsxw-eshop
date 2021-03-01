@@ -2,7 +2,7 @@
  * @Description:  导航栏
  * @Author: Wangtr
  * @Date: 2020-12-05 01:03:36
- * @LastEditTime: 2021-03-01 15:55:04
+ * @LastEditTime: 2021-03-01 18:07:15
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -100,7 +100,9 @@ export default {
     },
     methods: {
         goto(path) {
-            this.$router.push(path);
+            if (path !== this.$route.path) {
+                this.$router.push(path);
+            }
         },
         search() {
             // console.log(this.search_value);

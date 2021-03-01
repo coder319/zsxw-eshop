@@ -2,7 +2,7 @@
  * @Description: 用户个人界面
  * @Author: Wangtr
  * @Date: 2020-12-02 20:34:50
- * @LastEditTime: 2021-02-04 11:16:39
+ * @LastEditTime: 2021-03-01 17:47:23
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -12,14 +12,14 @@
         <div class="cm_content">
             <div class="cm_main">
                 <div class="pro_top">
-                    <a-avatar :size="72"></a-avatar>
-                    <span class="pro_name">用户名</span>
-                    <a-tag color="green">Lv.1</a-tag>
+                    <a-avatar :src="user.headImg" :size="72"></a-avatar>
+                    <span class="pro_name">{{ user.username }}</span>
+                    <a-tag color="green">Lv.{{ user.level }}</a-tag>
                 </div>
                 <div class="charts_box">
                     <section class="row first_row">
                         <sunburst></sunburst>
-                        <chart-radar></chart-radar>
+                        <chart-radar :data="radarData"></chart-radar>
                     </section>
                     <section class="row">
                         <chart-line></chart-line>
@@ -35,6 +35,7 @@
 import navBar from 'components/FixedNav';
 import cmFooter from 'components/Footer';
 import { Avatar, Tag } from 'ant-design-vue';
+import login from '@/mixin/login';
 // 表格导入
 import Sunburst from './components/ChartSunburst';
 import ChartLine from './components/ChartLine';
@@ -51,9 +52,39 @@ export default {
         ChartLine,
         ChartRadar
     },
+    mixins: [login],
     data() {
         return {
+            user: {
+                // id: 0,
+                // username: '',
+                // email: '',
+                // sex: '',
+                // headImg: '',
+                // eMail: '',
+                // exp: 0,
+                // introduce: '',
+                // level: 0,
+                // recommend: 0
+            },
+            lineData: {},
+            sunburstData: [],
+            radarData: {
+                name: [],
+                value: []
+            }
         };
+    },
+    created() {
+        this.user = this.$store.state.USER_INFO;
+        this.$http.getRadarData().then(res => {
+            res.data.forEach(val => {
+                // console.log(val);
+                this.radarData.name.push({ name: val.categoryName, max: 500 });
+                this.radarData.value.push(val.number);
+            });
+            console.log(typeof this.radarData.name);
+        });
     }
 };
 
