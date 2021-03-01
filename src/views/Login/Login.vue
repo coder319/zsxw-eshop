@@ -2,7 +2,7 @@
  * @Description: 登陆页面
  * @Author: Wangtr
  * @Date: 2020-12-31 10:54:21
- * @LastEditTime: 2021-01-27 15:30:16
+ * @LastEditTime: 2021-03-01 16:29:23
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -78,6 +78,9 @@ export default {
                     localStorage.setItem('zsxw_eshop_user_info', JSON.stringify(res.data));
                     this.$store.commit('USER_INFO_UPDATE', res.data);
                     this.$store.commit('LOGIN');
+                    this.$http.setHeaders({
+                        'x-access-token': res.data.xaccessToken
+                    });
                     this.$success({
                         title: '登陆成功',
                         content: '确认后跳转页面',

@@ -2,7 +2,7 @@
  * @Description: 请求API
  * @Author: Wangtr
  * @Date: 2020-12-09 23:29:09
- * @LastEditTime: 2021-03-01 14:34:56
+ * @LastEditTime: 2021-03-01 16:27:58
  * @LastEditors: Wangtr
  * @Reference:
  */
@@ -20,6 +20,10 @@ if (userInfo) {
     };
 }
 export default {
+    // 设置请求头
+    setHeaders(obj) {
+        axios.defaults.headers = obj;
+    },
     // 获取验证码
     getVerificationCode() {
         return axios({
@@ -60,6 +64,12 @@ export default {
     queryRecommend() {
         return axios({
             url: '/api/eshop/goods',
+            method: 'get'
+        });
+    },
+    getLineData() {
+        return axios({
+            url: '/api/history/week',
             method: 'get'
         });
     }
