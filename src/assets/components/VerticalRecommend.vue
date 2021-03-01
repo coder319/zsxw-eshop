@@ -2,7 +2,7 @@
  * @Description: 垂直方向的fixed推荐广告
  * @Author: Wangtr
  * @Date: 2021-03-01 13:13:53
- * @LastEditTime: 2021-03-01 14:25:27
+ * @LastEditTime: 2021-03-01 14:30:52
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -43,5 +43,7 @@ export default {
     position: absolute;
     right: 5px;
     top: calc( @navHeight + 20px);
+    padding: 15px 5px;
+    background-color: #f6f6f6;
 }
 </style>

@@ -2,14 +2,14 @@
  * @Description: 商品项样式一
  * @Author: Wangtr
  * @Date: 2020-12-10 15:01:07
- * @LastEditTime: 2021-03-01 12:45:50
+ * @LastEditTime: 2021-03-01 14:47:17
  * @LastEditors: Wangtr
  * @Reference:
 -->
 <template>
     <div class="cm_book" :style="{width:width,height:height}">
         <div class="top link" @click="routeTo()">
-            <img src="../image/test_cover1.jpg" alt="cover" />
+            <img :src="data.cover" alt="cover" />
             <div class="desc f-oh2 \">
                 {{ data.desc }}
             </div>

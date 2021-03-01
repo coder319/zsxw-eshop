@@ -2,7 +2,7 @@
  * @Description:  导航栏
  * @Author: Wangtr
  * @Date: 2020-12-05 01:03:36
- * @LastEditTime: 2021-03-01 12:47:43
+ * @LastEditTime: 2021-03-01 15:55:04
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -69,6 +69,8 @@
 
 <script>
 import { Input, Icon, Avatar, Tooltip } from 'ant-design-vue';
+import bus from '@/assets/js/bus.js';
+
 export default {
     name: 'NavBar',
     components: {
@@ -79,7 +81,6 @@ export default {
     },
     data() {
         return {
-            // items: ['首 页', '分 类', '购物车'],
             items: [
                 {
                     label: '首 页',
@@ -94,12 +95,28 @@ export default {
             search_value: ''
         };
     },
+    destroyed() {
+        bus.$off('search');
+    },
     methods: {
         goto(path) {
             this.$router.push(path);
         },
         search() {
             // console.log(this.search_value);
+            sessionStorage.setItem('zsxw-eshop-search', this.search_value);
+            console.log(0, this.$route.path);
+            if (this.$route.path === '/search') {
+                // this.$emit('search', this.search_value);
+                bus.$emit('search', this.search_value);
+            } else {
+                this.$router.push({
+                    name: 'Search'
+                    // query: {
+                    //     searchValue: this.search_value
+                    // }
+                });
+            }
         },
         logout() {
             localStorage.setItem('zsxw_eshop_user_info', '');
