@@ -2,7 +2,7 @@
  * @Description: 购物车
  * @Author: Wangtr
  * @Date: 2021-01-27 16:28:10
- * @LastEditTime: 2021-03-01 14:20:18
+ * @LastEditTime: 2021-03-02 14:55:14
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -14,7 +14,12 @@
             <div class="content_main lf">
                 <section class="table_header">
                     <span class="check_box">
-                        <a-checkbox></a-checkbox>
+                        <a-checkbox
+                            :indeterminate="indeterminate"
+                            :checked="checkAll"
+                            @change="onCheckAllChange"
+                        >
+                        </a-checkbox>
                     </span>
                     <span class="commodity">商品</span>
                     <span class="price">单价</span>
@@ -22,7 +27,7 @@
                     <span class="item_price">小结</span>
                     <span class="total_price">总价:{{ allTotal }}</span>
                 </section>
-                <a-checkbox-group @change="onChange">
+                <a-checkbox-group :value="checked" @change="onChange">
                     <section v-for="(item ,i) in listData" :key="i" class="list_item">
                         <span class="check_box">
                             <a-checkbox :value="item.cid"></a-checkbox>
@@ -78,7 +83,9 @@ export default {
                 // 4: 123.6,
                 // 5: 123.6
             },
-            checked: []
+            checked: [],
+            indeterminate: false,
+            checkAll: false
         };
     },
     computed: {
@@ -91,6 +98,13 @@ export default {
             }
             // console.log(total, total.toFixed(2));
             return total.toFixed(2);
+        },
+        checkedAll() {
+            const arr = [];
+            this.listData.forEach(val => {
+                arr.push(val.cid);
+            });
+            return arr;
         }
     },
     created() {
@@ -105,10 +119,32 @@ export default {
     methods: {
         onChange(val) {
             this.checked = val;
+            if (val.length === this.listData.length) {
+                this.checkAll = true;
+                this.indeterminate = false;
+            } else if (val.length === 0) {
+                this.checkAll = false;
+                this.indeterminate = false;
+            } else {
+                this.checkAll = false;
+                this.indeterminate = true;
+            }
         },
         changeTotalList() {
             // console.log(arguments, arguments[0], arguments[1]);
             this.$set(this.totalList, arguments[0], arguments[1]);
+        },
+        onCheckAllChange(e) {
+            Object.assign(this, {
+                checkedList: e.target.checked ? this.listData : [],
+                indeterminate: false,
+                checkAll: e.target.checked
+            });
+            if (this.checkAll) {
+                this.checked = this.checkedAll;
+            } else {
+                this.checked = [];
+            }
         },
         pay() {
         }

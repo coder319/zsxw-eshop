@@ -2,7 +2,7 @@
  * @Description: 购物车商品组件
  * @Author: Wangtr
  * @Date: 2021-01-28 15:06:44
- * @LastEditTime: 2021-03-01 14:19:24
+ * @LastEditTime: 2021-03-02 14:55:54
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -76,7 +76,7 @@ export default {
         }
     },
     created() {
-        console.log(this.commodityNum, this.data.num);
+        // console.log(this.commodityNum, this.data.num);
         this.commodityNum = this.data.num;
     }
 };
