@@ -2,7 +2,7 @@
  * @Description: 首页
  * @Author: Wangtr
  * @Date: 2020-11-14 09:37:58
- * @LastEditTime: 2021-02-23 13:11:57
+ * @LastEditTime: 2021-03-02 14:31:39
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -23,44 +23,50 @@
                     <p class="title">
                         重点推荐
                     </p>
-                    <ul lf_list>
+                    <ul class="lf_list" @click="routeTo('/sort',$event)">
                         <li v-for="(i,index) in lf_list1" :key="index" class="list_item">{{ i.text }}</li>
                     </ul>
                     <p class="title">
                         排行榜
                     </p>
-                    <ul lf_list>
+                    <ul class="lf_list" @click="routeTo('/sort',$event)">
                         <li v-for="(i,index) in lf_list2" :key="index" class="list_item">{{ i.text }}</li>
                     </ul>
                 </div>
                 <!--        主体右侧盒子-->
                 <div class="lf rt_box">
-                    <span class="title">
+                    <span class="title" @click="routeTo('/sort',$event)">
                         特价专区
                     </span>
                     <div class="content clearfix">
-                        <book class="lf tjzq_book"></book>
-                        <book class="lf tjzq_book"></book>
-                        <book class="lf tjzq_book"></book>
-                        <book class="lf tjzq_book"></book>
+                        <book
+                            v-for="(item,i) in book1"
+                            :key="i"
+                            :data="item"
+                            class="lf tjzq_book"
+                        ></book>
                     </div>
-                    <span class="title">
+                    <span class="title" @click="routeTo('/sort',$event)">
                         畅销书籍
                     </span>
                     <div class="content clearfix">
-                        <book class="lf tjzq_book"></book>
-                        <book class="lf tjzq_book"></book>
-                        <book class="lf tjzq_book"></book>
-                        <book class="lf tjzq_book"></book>
+                        <book
+                            v-for="(item,i) in book2"
+                            :key="i"
+                            :data="item"
+                            class="lf tjzq_book"
+                        ></book>
                     </div>
-                    <span class="title">
+                    <span class="title" @click="routeTo('/sort',$event)">
                         新书上架
                     </span>
                     <div class="content clearfix">
-                        <book class="lf tjzq_book"></book>
-                        <book class="lf tjzq_book"></book>
-                        <book class="lf tjzq_book"></book>
-                        <book class="lf tjzq_book"></book>
+                        <book
+                            v-for="(item,i) in book3"
+                            :key="i"
+                            :data="item"
+                            class="lf tjzq_book"
+                        ></book>
                     </div>
                 </div>
             </div>
@@ -117,12 +123,44 @@ export default {
                     text: '原创小说排行',
                     path: ''
                 }
-            ]
+            ],
+            book1: [],
+            book2: [],
+            book3: []
         };
     },
     computed: {
     },
+    created() {
+        this.$http.queryGoods({
+            type: '玄幻魔法',
+            pageSize: 4,
+            currentPage: 1
+        }).then(res => {
+            this.book1 = res.data.list;
+        });
+        this.$http.queryGoods({
+            type: '玄幻魔法',
+            pageSize: 4,
+            currentPage: 2
+        }).then(res => {
+            this.book2 = res.data.list;
+        });
+        this.$http.queryGoods({
+            type: '玄幻魔法',
+            pageSize: 4,
+            currentPage: 3
+        }).then(res => {
+            this.book3 = res.data.list;
+        });
+    },
     methods: {
+        routeTo(path, e) {
+            console.log(path, e.target.nodeName.toLowerCase());
+            if (e.target.nodeName.toLowerCase() === 'li' || e.target.nodeName.toLowerCase() === 'span') {
+                this.$router.push(path);
+            }
+        }
     }
 };
 </script>
