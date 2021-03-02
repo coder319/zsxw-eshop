@@ -2,7 +2,7 @@
  * @Description: 商品项样式二
  * @Author: Wangtr
  * @Date: 2020-12-11 14:06:46
- * @LastEditTime: 2021-03-01 15:18:10
+ * @LastEditTime: 2021-03-02 14:09:42
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -28,7 +28,11 @@
         </div>
         <div class="opts lf">
             <a-button shape="circle" icon="star"></a-button>
-            <a-button shape="circle" icon="shopping"></a-button>
+            <a-button
+                shape="circle"
+                icon="shopping"
+                @click="inCart(data.name,data.cid)"
+            ></a-button>
         </div>
     </div>
 </template>
@@ -58,6 +62,7 @@ export default {
         }
     },
     methods: {
+        // 跳转详情页
         toDetail() {
             this.$router.push({
                 name: 'Detail',
@@ -66,8 +71,27 @@ export default {
                 }
             });
         },
+        // 搜索作者
         search(str) {
             this.$emit('searchAuthor', str);
+        },
+        // 加入购物车
+        inCart(name, cid) {
+            const _this = this;
+            this.$confirm({
+                title: '加入购物车',
+                content: `是否将${name}加入购物车?`,
+                okText: '加入',
+                cancelText: '取消',
+                onOk() {
+                    _this.$http.changeCart({
+                        cid: cid,
+                        newNum: 1
+                    }).then(res => {
+                        console.log(res);
+                    });
+                }
+            });
         }
     }
 };

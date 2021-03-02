@@ -2,7 +2,7 @@
  * @Description: 入口js文件
  * @Author: Wangtr
  * @Date: 2020-11-14 09:37:58
- * @LastEditTime: 2021-02-23 13:29:25
+ * @LastEditTime: 2021-03-02 14:02:07
  * @LastEditors: Wangtr
  */
 import Vue from 'vue';
@@ -23,6 +23,7 @@ Vue.use(FormModel, Modal);
 Vue.prototype.$error = Modal.error;
 Vue.prototype.$success = Modal.success;
 Vue.prototype.$warning = Modal.warning;
+Vue.prototype.$confirm = Modal.confirm;
 
 new Vue({
   router,

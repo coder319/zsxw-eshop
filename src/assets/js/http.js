@@ -2,7 +2,7 @@
  * @Description: 请求API
  * @Author: Wangtr
  * @Date: 2020-12-09 23:29:09
- * @LastEditTime: 2021-03-01 16:54:13
+ * @LastEditTime: 2021-03-02 14:00:00
  * @LastEditors: Wangtr
  * @Reference:
  */
@@ -43,6 +43,14 @@ export default {
         return axios({
             url: '/api/eshop/shoppingcar',
             method: 'get'
+        });
+    },
+    // 修改用户购物车信息
+    changeCart(data) {
+        return axios({
+            url: '/api/eshop/shoppingcar',
+            method: 'post',
+            data: data
         });
     },
     // 获取指定商品信息
