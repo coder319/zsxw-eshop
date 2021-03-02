@@ -2,7 +2,7 @@
  * @Description: 购物车商品组件
  * @Author: Wangtr
  * @Date: 2021-01-28 15:06:44
- * @LastEditTime: 2021-03-02 14:58:44
+ * @LastEditTime: 2021-03-02 15:08:04
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -12,7 +12,7 @@
             <img class="lf" :src="data.cover" alt="cover" />
             <section class="describe lf">
                 <div class="name">{{ data.name }}</div>
-                <div class="desc f-oh2">{{ data.desc }}</div>
+                <div class="introduce f-oh2">{{ data.introduce }}</div>
                 <div class="author">{{ data.author }}</div>
                 <div class="tag">{{ data.tag }}</div>
                 <div class="seller f-otw">{{ data.seller }}</div>
@@ -49,7 +49,7 @@ export default {
                     cid: 9999,
                     cover: require('@/assets/image/test_cover1.jpg'),
                     name: '书名',
-                    desc: '简介',
+                    introduce: '简介',
                     author: '作者',
                     tag: '标签',
                     num: 1,
@@ -103,7 +103,7 @@ export default {
             font-size: 24px;
             font-weight: bold;
         }
-        .desc{
+        .introduce{
             height: 56px;
             font-size: 18px;
             color: #888888;

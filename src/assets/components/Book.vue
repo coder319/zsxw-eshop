@@ -10,8 +10,8 @@
     <div class="cm_book" :style="{width:width,height:height}">
         <div class="top link" @click="routeTo()">
             <img :src="data.cover" alt="cover" />
-            <div class="desc f-oh2 \">
-                {{ data.desc }}
+            <div class="introduce f-oh2 \">
+                {{ data.introduce }}
             </div>
         </div>
         <div class="bottom">
@@ -51,7 +51,7 @@ export default {
                     cid: 9999,
                     cover: require('../../assets/image/test_cover1.jpg'),
                     name: '书名',
-                    desc: '简介',
+                    introduce: '简介',
                     author: '作者',
                     tag: '标签',
                     price: 19.80
@@ -81,7 +81,7 @@ export default {
             margin: 10px 0;
             object-fit: cover;
         }
-        .desc{
+        .introduce{
             line-height: 20px;
         }
     }

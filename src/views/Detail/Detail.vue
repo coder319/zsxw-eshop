@@ -2,7 +2,7 @@
  * @Description: 商品详情页
  * @Author: Wangtr
  * @Date: 2021-02-26 12:17:15
- * @LastEditTime: 2021-03-01 15:37:16
+ * @LastEditTime: 2021-03-02 15:08:26
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -19,7 +19,7 @@
                     <a-tag color="cyan">
                         {{ data.tag }}
                     </a-tag>
-                    <div class="desc f-oh2">{{ data.desc }}</div>
+                    <div class="introduce f-oh2">{{ data.introduce }}</div>
                     <div>
                         <span>作者：</span>
                         <span class="name link">{{ data.author }}</span>
@@ -53,7 +53,7 @@ export default {
                 name: '蛙',
                 cover: require('../../assets/image/test_cover1.jpg'),
                 author: '莫言',
-                desc: '描述',
+                introduce: '描述',
                 tag: '标签',
                 price: 64.20,
                 pics: [
@@ -100,7 +100,7 @@ export default {
         font-size: 36px;
         font-weight: bold;
     }
-    .desc{
+    .introduce{
         margin-top: 10px;
         line-height: 30px;
         height: 60px;

@@ -2,7 +2,7 @@
  * @Description: 商品项样式二
  * @Author: Wangtr
  * @Date: 2020-12-11 14:06:46
- * @LastEditTime: 2021-03-02 14:09:42
+ * @LastEditTime: 2021-03-02 15:07:45
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -14,7 +14,7 @@
                 class="name link"
                 @click="toDetail()"
             >{{ data.name }}</div>
-            <div class="desc f-oh2">{{ data.desc }}</div>
+            <div class="introduce f-oh2">{{ data.introduce }}</div>
             <div class="author">
                 <span>作者：</span>
                 <span class="link" @click="search(data.author)">
@@ -53,7 +53,7 @@ export default {
                 return {
                     cover: require('../../assets/image/test_cover1.jpg'),
                     name: '书名',
-                    desc: '简介',
+                    introduce: '简介',
                     author: '作者',
                     tag: '标签',
                     price: 0.00
@@ -119,7 +119,7 @@ export default {
             font-size: 24px;
             font-weight: bold;
         }
-        .desc{
+        .introduce{
             height: 56px;
             font-size: 18px;
             color: #888888;
