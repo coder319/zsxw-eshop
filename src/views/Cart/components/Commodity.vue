@@ -2,7 +2,7 @@
  * @Description: 购物车商品组件
  * @Author: Wangtr
  * @Date: 2021-01-28 15:06:44
- * @LastEditTime: 2021-03-02 15:08:04
+ * @LastEditTime: 2021-03-02 16:31:04
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -14,7 +14,10 @@
                 <div class="name">{{ data.name }}</div>
                 <div class="introduce f-oh2">{{ data.introduce }}</div>
                 <div class="author">{{ data.author }}</div>
-                <div class="tag">{{ data.tag }}</div>
+                <!-- <div class="tag">{{ data.tag }}</div> -->
+                <a-tag color="cyan" class="tag">
+                    {{ data.tag }}
+                </a-tag>
                 <div class="seller f-otw">{{ data.seller }}</div>
             </section>
             <section class="price lf">￥{{ data.price.toFixed(2) }}</section>
@@ -29,16 +32,21 @@
             <section class="item_price lf">
                 ￥{{ total.toFixed(2) }}
             </section>
+            <section
+                class="remove"
+                @click="deleteItem(data.name,data.cid)"
+            >删除</section>
         </div>
     </div>
 </template>
 
 <script>
-import { InputNumber } from 'ant-design-vue';
+import { InputNumber, Tag } from 'ant-design-vue';
 export default {
     name: 'Commodity',
     components: {
-        AInputNumber: InputNumber
+        AInputNumber: InputNumber,
+        ATag: Tag
     },
     props: {
         // 商品信息
@@ -78,6 +86,11 @@ export default {
     created() {
         // console.log(this.commodityNum, this.data.num);
         this.commodityNum = this.data.num;
+    },
+    methods: {
+        deleteItem(name, cid) {
+            this.$emit('deleteItem', name, cid);
+        }
     }
 };
 </script>
@@ -110,10 +123,13 @@ export default {
             text-indent: 2rem;
         }
     }
-    .price,.item_price{
+    .price,.item_price,.remove{
         margin-top: 80px;
         font-size: 20px;
         color: #b12704;
+    }
+    .remove:hover{
+        font-weight: bold;
     }
     .input_number{
         margin-top: 75px;

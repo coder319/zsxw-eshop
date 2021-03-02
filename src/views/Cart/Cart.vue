@@ -2,7 +2,7 @@
  * @Description: 购物车
  * @Author: Wangtr
  * @Date: 2021-01-27 16:28:10
- * @LastEditTime: 2021-03-02 15:05:02
+ * @LastEditTime: 2021-03-02 16:34:18
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -43,6 +43,7 @@
                         <span class="commodity">
                             <commodity
                                 :data="item"
+                                @deleteItem="deleteItem"
                                 @changeTotal="changeTotalList"
                             ></commodity>
                         </span>
@@ -124,16 +125,42 @@ export default {
         this.$http.queryRecommend().then(res => {
             this.recommendData = res.data;
         });
-        // 购物车列表
-        this.$http.queryCart().then(res => {
-            this.listData = res.data;
-            this.listData.forEach(val => {
-                // console.log(val.cid, val.num, val.price);
-                this.$set(this.totalList, val.cid, val.num * val.price);
-            });
-        });
+        this.init();
     },
     methods: {
+        // 初始化购物车列表
+        init() {
+            this.$http.queryCart().then(res => {
+                this.listData = res.data;
+                this.totalList = {};
+                this.listData.forEach(val => {
+                    // console.log(val.cid, val.num, val.price);
+                    this.$set(this.totalList, val.cid, val.num * val.price);
+                });
+            });
+        },
+        // 单项删除
+        deleteItem(name, cid) {
+            const _this = this;
+            this.$confirm({
+                title: '移除商品',
+                content: `是否将${name}从购物车移除?`,
+                okText: '删除',
+                cancelText: '取消',
+                onOk() {
+                    _this.$http.changeCart({
+                        cid: cid,
+                        newNum: 0
+                    }).then(res => {
+                        // console.log(res);
+                        if (res.success) {
+                            _this.$message.success('移除成功！');
+                            _this.init();
+                        }
+                    });
+                }
+            });
+        },
         onChange(val) {
             this.checked = val;
             if (val.length === this.listData.length) {
