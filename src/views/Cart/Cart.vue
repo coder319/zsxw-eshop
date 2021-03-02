@@ -2,7 +2,7 @@
  * @Description: 购物车
  * @Author: Wangtr
  * @Date: 2021-01-27 16:28:10
- * @LastEditTime: 2021-03-02 14:55:14
+ * @LastEditTime: 2021-03-02 15:05:02
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -10,7 +10,15 @@
     <div>
         <nav-bar></nav-bar>
         <div class="cm_content cart_content clearfix">
-            <div class="content_side lf"></div>
+            <div class="content_side lf">
+                <span class="recommend">推荐商品</span>
+                <book
+                    v-for="(item,i) in recommendData"
+                    :key="i"
+                    :data="item"
+                    class="book"
+                ></book>
+            </div>
             <div class="content_main lf">
                 <section class="table_header">
                     <span class="check_box">
@@ -50,17 +58,21 @@ import navBar from 'components/NavBar';
 import Commodity from './components/Commodity';
 import { Checkbox } from 'ant-design-vue';
 import login from '@/mixin/login';
+import Book from 'components/Book';
 export default {
     name: 'Cart',
     components: {
         navBar,
         Commodity,
+        Book,
         ACheckbox: Checkbox,
         ACheckboxGroup: Checkbox.Group
     },
     mixins: [login],
     data() {
         return {
+            // 推荐列表
+            recommendData: [],
             // 商品列表
             listData: [
                 // {
@@ -108,6 +120,11 @@ export default {
         }
     },
     created() {
+        // 推荐列表
+        this.$http.queryRecommend().then(res => {
+            this.recommendData = res.data;
+        });
+        // 购物车列表
         this.$http.queryCart().then(res => {
             this.listData = res.data;
             this.listData.forEach(val => {
@@ -170,6 +187,17 @@ span{
     box-sizing: border-box;
     width: 20vw;
     border-right: 3px solid #f6f6f6;
+    .recommend{
+        display: inline-block;
+        width: 100%;
+        padding: 22px;
+        text-align: center;
+        color: #666;
+        font-size: 25px;
+    }
+    .book{
+        margin: 0 auto;
+    }
 }
 
 .content_main{

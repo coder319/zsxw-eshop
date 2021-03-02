@@ -2,7 +2,7 @@
  * @Description: 购物车商品组件
  * @Author: Wangtr
  * @Date: 2021-01-28 15:06:44
- * @LastEditTime: 2021-03-02 14:55:54
+ * @LastEditTime: 2021-03-02 14:58:44
  * @LastEditors: Wangtr
  * @Reference:
 -->
