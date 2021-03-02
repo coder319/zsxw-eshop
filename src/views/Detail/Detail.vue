@@ -2,7 +2,7 @@
  * @Description: 商品详情页
  * @Author: Wangtr
  * @Date: 2021-02-26 12:17:15
- * @LastEditTime: 2021-03-02 15:08:26
+ * @LastEditTime: 2021-03-02 15:20:40
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -26,6 +26,9 @@
                         <span>商家：</span>
                         <span class="name link">{{ data.seller }}</span>
                     </div>
+                    <div class="btn">
+                        <a-button size="large" icon="shopping" @click="inCart(data.name,data.cid)">加入购物车</a-button>
+                    </div>
                 </section>
             </div>
         </div>
@@ -37,13 +40,14 @@
 import navBar from 'components/NavBar';
 import cmFooter from 'components/Footer';
 import login from '@/mixin/login';
-import { Tag } from 'ant-design-vue';
+import { Tag, Button } from 'ant-design-vue';
 export default {
     name: 'Detail',
     components: {
         navBar,
         cmFooter,
-        ATag: Tag
+        ATag: Tag,
+        AButton: Button
     },
     mixins: [login],
     data() {
@@ -75,6 +79,29 @@ export default {
             this.data = res.data;
             // this.$set(this.data, 'cover', require('../../assets/image/test_cover1.jpg'));
         });
+    },
+    methods: {
+        // 加入购物车
+        inCart(name, cid) {
+            const _this = this;
+            this.$confirm({
+                title: '加入购物车',
+                content: `是否将${name}加入购物车?`,
+                okText: '加入',
+                cancelText: '取消',
+                onOk() {
+                    _this.$http.changeCart({
+                        cid: cid,
+                        newNum: 1
+                    }).then(res => {
+                        // console.log(res);
+                        if (res.success) {
+                            _this.$message.success('加入购物车成功！');
+                        }
+                    });
+                }
+            });
+        }
     }
 };
 </script>
@@ -104,6 +131,9 @@ export default {
         margin-top: 10px;
         line-height: 30px;
         height: 60px;
+    }
+    .btn{
+        margin-top: 50px;
     }
 }
 </style>

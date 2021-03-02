@@ -2,7 +2,7 @@
  * @Description: 商品项样式二
  * @Author: Wangtr
  * @Date: 2020-12-11 14:06:46
- * @LastEditTime: 2021-03-02 15:07:45
+ * @LastEditTime: 2021-03-02 15:21:00
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -88,7 +88,10 @@ export default {
                         cid: cid,
                         newNum: 1
                     }).then(res => {
-                        console.log(res);
+                        // console.log(res);
+                        if (res.success) {
+                            _this.$message.success('加入购物车成功！');
+                        }
                     });
                 }
             });
