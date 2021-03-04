@@ -2,7 +2,7 @@
  * @Description: 旭日图
  * @Author: Wangtr
  * @Date: 2021-02-04 09:47:27
- * @LastEditTime: 2021-02-04 11:17:35
+ * @LastEditTime: 2021-03-02 16:39:09
  * @LastEditors: Wangtr
  * @Reference:
 -->
@@ -70,6 +70,9 @@ export default {
     mounted() {
         const chart = echart.init(this.$refs.Sunburst);
         const option = {
+            title: {
+                text: '喜欢的作者'
+            },
             series: {
                 radius: ['25%', '100%'],
                 type: 'sunburst',

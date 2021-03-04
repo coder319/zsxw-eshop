@@ -2,7 +2,7 @@
  * @Description: axios拦截器
  * @Author: Wangtr
  * @Date: 2020-12-05 00:46:28
- * @LastEditTime: 2021-03-01 13:27:56
+ * @LastEditTime: 2021-03-02 16:37:12
  * @LastEditors: Wangtr
  * @Reference:
  */
@@ -27,6 +27,7 @@ axios.interceptors.response.use(response => {
     // 二次处理返回值，只保留三个属性
     if (response.data.code === 3003) {
         store.commit('LOGOUT');
+        localStorage.setItem('zsxw_eshop_user_info', '');
         alert('token过期，请重新登陆');
     }
     const res = {

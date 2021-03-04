@@ -33,6 +33,9 @@ export default {
     mounted() {
         const chart = echart.init(this.$refs.Chart);
         const option = {
+            title: {
+                text: '最近七天浏览量'
+            },
             label: {
                 show: true
             },
